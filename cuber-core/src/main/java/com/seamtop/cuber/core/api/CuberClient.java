@@ -1,6 +1,7 @@
 package com.seamtop.cuber.core.api;
 
 import com.seamtop.cuber.common.StringUtil;
+import com.seamtop.cuber.common.params.ParamsCalibration;
 import com.seamtop.cuber.core.api.car.CarIndexAddOperater;
 
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.HashMap;
  * Created by feng on 2015/8/8.
  * 对客户端接口API
  */
-public enum  CuberApplication {
+public enum CuberClient {
 
     INSTANCE;
 
@@ -18,9 +19,11 @@ public enum  CuberApplication {
 
     //增加车源实现
     public void addCarIndex(final HashMap<String,Object> paramsMap) throws Exception{
-        IOperater operater = new CarIndexAddOperater();
-        operater.execute(paramsMap);
-        StringUtil.isEmpty("s");
+        boolean caliRes = ParamsCalibration.caliAddCarParamsCali(paramsMap);
+        if(caliRes){
+            IOperater operater = new CarIndexAddOperater();
+            operater.execute(paramsMap);
+        }
     }
 
     //删除车源实现

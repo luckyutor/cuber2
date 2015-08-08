@@ -1,6 +1,6 @@
 package com.seamtop.cuber.core;
 
-import com.seamtop.cuber.core.api.CuberApplication;
+import com.seamtop.cuber.core.api.CuberClient;
 
 import java.util.HashMap;
 
@@ -10,10 +10,10 @@ import java.util.HashMap;
 public class TestMain {
     public static void main(String [] args){
         HashMap<String,Object> pramsMap = new HashMap<String, Object>();
-        pramsMap.put("car_id", "10001");
+        pramsMap.put("car_id", "-10001");
         pramsMap.put("province", "110000");
         try{
-            CuberApplication.INSTANCE.addCarIndex(pramsMap);
+            CuberClient.INSTANCE.addCarIndex(pramsMap);
         }catch (Exception e){
             e.printStackTrace();
         }
