@@ -11,5 +11,6 @@ public class KafkaQueueSender implements QueueSender{
 
     public void send(String msg) throws Exception {
         LOG.debug("cuber send msg:" + msg);
+
     }
 }
