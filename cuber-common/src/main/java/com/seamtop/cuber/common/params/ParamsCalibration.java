@@ -1,6 +1,7 @@
 package com.seamtop.cuber.common.params;
 
 import com.seamtop.cuber.common.StringUtil;
+import com.seamtop.cuber.common.entriy.Result;
 
 import java.util.HashMap;
 
@@ -10,8 +11,8 @@ import java.util.HashMap;
  */
 public class ParamsCalibration {
 
-    public static boolean calibration(int caliType,HashMap<String,Object> paramMap){
-        boolean result = false;
+    public static Result calibration(int caliType,HashMap<String,Object> paramMap){
+        Result result = null;
         switch (caliType){
             case CalibrationConstants.API_ADD_CAR_INDEX:
                 result = caliAddCarParamsCali(paramMap);
@@ -19,7 +20,7 @@ public class ParamsCalibration {
             case 2:
                 break;
         }
-        return false;
+        return null;
     }
 
     /**
@@ -27,16 +28,19 @@ public class ParamsCalibration {
      * @param paramsMap
      * @return
      */
-    public static boolean caliAddCarParamsCali(HashMap<String,Object> paramsMap){
+    public static Result caliAddCarParamsCali(HashMap<String,Object> paramsMap){
         if(paramsMap == null || paramsMap.size() == 0){
-            return false;
+            return new Result(Result.PARAMS_IS_NULL,null);
         }
 
         //carId不可为空且必须为数字
         Object oCarId = paramsMap.get("car_id");
-        if(!StringUtil.isDigital((String)oCarId)){
-            return false;
+        if(StringUtil.isEmpty((String)oCarId)){
+            return new Result(Result.PARAMS_IS_NULL,"car_id");
         }
-        return true;
+        if(!StringUtil.isDigital((String)oCarId)){
+            return new Result(Result.PARAMS_FORMAT_ERROR,"car_id");
+        }
+        return new Result(Result.SUCCESS);
     }
 }
