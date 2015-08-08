@@ -1,6 +1,7 @@
 package com.seamtop.cuber.common.params;
 
-import com.seamtop.cuber.common.StringUtil;
+import com.seamtop.cuber.common.util.DateUtil;
+import com.seamtop.cuber.common.util.StringUtil;
 import com.seamtop.cuber.common.entriy.ErrorCode;
 import com.seamtop.cuber.common.exception.CuberParamsProcessException;
 
@@ -58,15 +59,41 @@ public class ParamsCalibration {
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.CITY_ID).toString());
         }
 
-        //mileage不可为空，切必须为正数
-        String mileage = paramsMap.get(ParamsContants.MILEAGE);
-        if(StringUtil.isEmpty(mileage)){
+        //mileage不可为空，切必须为double类型
+        String mileageStr = paramsMap.get(ParamsContants.MILEAGE);
+        if(StringUtil.isEmpty(mileageStr)){
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.MILEAGE).toString());
         }
+        if(!StringUtil.isDouble(mileageStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.MILEAGE).toString());
+        }
 
+        //license_date不可为空，且必须为时间戳
+        String licenseDateStr = paramsMap.get(ParamsContants.LICENSE_DATE);
+        if(StringUtil.isEmpty(licenseDateStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.LICENSE_DATE).toString());
+        }
+        if(!DateUtil.isTimeStampBeforeNow(licenseDateStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.LICENSE_DATE).toString());
+        }
 
+        //brandId不可为空，且必须为数字
+        String brandIdStr = paramsMap.get(ParamsContants.BRAND_ID);
+        if(StringUtil.isEmpty(brandIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.BRAND_ID).toString());
+        }
+        if(!StringUtil.isDigital(brandIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.BRAND_ID).toString());
+        }
 
-
+        //modelId不可为空，且必须为数字
+        String modelIdStr = paramsMap.get(ParamsContants.MODEL_ID);
+        if(StringUtil.isEmpty(modelIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.MODEL_ID).toString());
+        }
+        if(!StringUtil.isDigital(modelIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.MODEL_ID).toString());
+        }
 
     }
 }

@@ -13,13 +13,15 @@ public class ParamsContants {
 
     public static final String MILEAGE = "mileage";
 
-    public static final String LISCENSE_DATE = "first_liscense_date";
+    public static final String LICENSE_DATE = "first_license_date";
 
     public static final String PRICE = "sale_price";
 
     public static final String BRAND_ID = "brand_id";
 
     public static final String MODEL_ID = "model_id";
+
+    public static final String TRIMM_ID = "trimm_id";
 
     public static final String DEALER_ID = "dealer_id";
 

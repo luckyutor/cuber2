@@ -1,4 +1,4 @@
-package com.seamtop.cuber.common;
+package com.seamtop.cuber.common.util;
 
 import java.util.regex.Pattern;
 
