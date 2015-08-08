@@ -30,7 +30,7 @@ public class ParamsCalibration {
      * @param paramsMap
      * @return
      */
-    public static  void caliAddCarParams(HashMap<String,String> paramsMap) throws Exception{
+    public static void caliAddCarParams(HashMap<String,String> paramsMap) throws Exception{
         if(paramsMap == null || paramsMap.size() == 0){
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,null).toString());
         }
