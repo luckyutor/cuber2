@@ -26,6 +26,8 @@ public class CuberClientTest {
         paramsMap.put("create_date",new Date().getTime()+"");
         paramsMap.put("color","黑色");
         paramsMap.put("mileage", "1000");
+        paramsMap.put("flag_source","0");
+        paramsMap.put("flag","0");
         try{
             CuberClient.INSTANCE.addCarIndex(paramsMap);
         }catch (Exception e){

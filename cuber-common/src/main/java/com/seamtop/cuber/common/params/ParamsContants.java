@@ -28,4 +28,8 @@ public class ParamsContants {
     public static final String CREATE_DATE = "create_date";
 
     public static final String COLOR = "color";
+
+    public static final String FLAG = "flag";
+
+    public static final String FLAG_SOURCE = "flag_source";
 }

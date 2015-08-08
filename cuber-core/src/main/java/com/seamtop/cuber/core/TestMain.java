@@ -9,16 +9,6 @@ import java.util.HashMap;
  */
 public class TestMain {
     public static void main(String [] args){
-        HashMap<String,String> paramsMap = new HashMap<String, String>();
-        paramsMap.put("car_id","1");
-        paramsMap.put("province","110000");
-        paramsMap.put("city","111000");
-        paramsMap.put("dealer_id","110000");
-        paramsMap.put("mileage","1000");
-        try{
-            CuberClient.INSTANCE.addCarIndex(paramsMap);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 }

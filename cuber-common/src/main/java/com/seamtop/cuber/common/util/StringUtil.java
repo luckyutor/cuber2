@@ -55,11 +55,18 @@ public class StringUtil {
     public static boolean isDouble(String str){
         if(str==null || "".equals(str))
             return false;
-        Pattern pattern = Pattern.compile("[1-9]+(\\.?)[0-9]*");
+        Pattern pattern = Pattern.compile("[0-9]+(\\.?)[0-9]*|0");
+        return pattern.matcher(str).matches();
+    }
+
+    public static boolean isNumbric(String str){
+        if(str==null || "".equals(str))
+            return false;
+        Pattern pattern = Pattern.compile("[0-9]+[0-9]*|0");
         return pattern.matcher(str).matches();
     }
 
     public static void main(String [] args){
-        System.out.println(isChinese("1中文"));
+        System.out.println(isDouble("0.00001"));
     }
 }

@@ -132,7 +132,6 @@ public class ParamsCalibration {
         }
 
         //商户ID,不可为空，必须为数字
-        //brandId不可为空，且必须为数字
         String dealerIdStr = paramsMap.get(ParamsContants.DEALER_ID);
         if(StringUtil.isEmpty(dealerIdStr)){
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.DEALER_ID).toString());
@@ -141,5 +140,22 @@ public class ParamsCalibration {
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.DEALER_ID).toString());
         }
 
+        //车辆来源,不可为空，且必须为数字
+        String flagSourceStr = paramsMap.get(ParamsContants.FLAG_SOURCE);
+        if(StringUtil.isEmpty(flagSourceStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.FLAG_SOURCE).toString());
+        }
+        if(!StringUtil.isNumbric(flagSourceStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.FLAG_SOURCE).toString());
+        }
+
+        //车辆状态,不可为空，必须为数字
+        String flagStr = paramsMap.get(ParamsContants.FLAG);
+        if(StringUtil.isEmpty(flagStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.FLAG).toString());
+        }
+        if(!StringUtil.isNumbric(flagStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.FLAG).toString());
+        }
     }
 }
