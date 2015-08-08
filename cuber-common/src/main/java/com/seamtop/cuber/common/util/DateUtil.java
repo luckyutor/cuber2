@@ -7,15 +7,6 @@ import java.util.Date;
  */
 public class DateUtil {
 
-    public static boolean isTimeStamp(String str){
-        if(StringUtil.isEmpty(str) || StringUtil.isDouble(str)){
-            return false;
-        }
-        long t = Long.valueOf(str);
-        Date date=new Date(t);
-        return false;
-    }
-
     public static boolean isTimeStampBeforeNow(String str){
         if(StringUtil.isEmpty(str) || !StringUtil.isDouble(str)){
             return false;
@@ -31,7 +22,6 @@ public class DateUtil {
 
     public static void main(String [] args){
         Date d = new Date();
-        isTimeStamp(d.getTime() + "");
-        isTimeStamp("0");
+
     }
 }
