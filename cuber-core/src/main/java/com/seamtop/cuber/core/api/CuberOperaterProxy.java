@@ -1,8 +1,12 @@
 package com.seamtop.cuber.core.api;
 
+import com.seamtop.cuber.common.params.CalibrationConstants;
+import com.seamtop.cuber.common.params.ParamsCalibration;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.HashMap;
 
 /**
  * Created by feng on 2015/8/8.
@@ -20,16 +24,8 @@ public class CuberOperaterProxy implements InvocationHandler{
 
     public Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
-        Object result=null;
-        System.out.println("事物开始");
-        System.out.println("args;"+args);
-        for(int i=0;i<args.length;i++){
-            System.out.println("args;"+args[i]);
-        }
-        //执行方法
-        System.out.println("target:"+target);
-        result=method.invoke(target, args);
-        System.out.println("事物结束");
+        //执行主体方法
+        Object result=method.invoke(target, args);
         return result;
     }
 }

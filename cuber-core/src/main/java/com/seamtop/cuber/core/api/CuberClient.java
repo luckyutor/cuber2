@@ -19,12 +19,8 @@ public enum CuberClient {
 
     //增加车源实现
     public void addCarIndex(final HashMap<String,String> paramsMap) throws Exception{
-        ParamsCalibration.calibration(CalibrationConstants.API_ADD_CAR_INDEX,paramsMap);
-//        IOperater operater = new CarIndexAddOperater();
-//        operater.execute(paramsMap);
-
-          CuberOperaterProxy proxy = new CuberOperaterProxy();
-          IOperater operater = (IOperater)proxy.bind(new CarIndexAddOperater());
+        CuberOperaterProxy proxy = new CuberOperaterProxy();
+        IOperater operater = (IOperater)proxy.bind(new CarIndexAddOperater());
         operater.execute(paramsMap);
     }
 
