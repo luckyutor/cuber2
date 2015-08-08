@@ -1,7 +1,6 @@
 package com.seamtop.cuber.core.api.car;
 
-import com.seamtop.cuber.common.StringUtil;
-import com.seamtop.cuber.common.entriy.Result;
+import com.seamtop.cuber.common.entriy.ErrorCode;
 import com.seamtop.cuber.core.api.IOperater;
 
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.HashMap;
  */
 public class CarIndexAddOperater implements IOperater {
 
-    public Result execute(HashMap<String,Object> paramsMap){
+    public ErrorCode execute(HashMap<String,Object> paramsMap){
         System.out.println("增加车源方法--" + paramsMap);
         return null;
     }

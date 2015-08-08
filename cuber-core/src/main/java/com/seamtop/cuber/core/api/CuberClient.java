@@ -1,7 +1,5 @@
 package com.seamtop.cuber.core.api;
 
-import com.seamtop.cuber.common.StringUtil;
-import com.seamtop.cuber.common.entriy.Result;
 import com.seamtop.cuber.common.params.ParamsCalibration;
 import com.seamtop.cuber.core.api.car.CarIndexAddOperater;
 
@@ -20,12 +18,9 @@ public enum CuberClient {
 
     //增加车源实现
     public void addCarIndex(final HashMap<String,Object> paramsMap) throws Exception{
-        Result result = ParamsCalibration.caliAddCarParamsCali(paramsMap);
-        if(result.isSuccess()){
-            IOperater operater = new CarIndexAddOperater();
-            result = operater.execute(paramsMap);
-        }
-
+        ParamsCalibration.caliAddCarParamsCali(paramsMap);
+        IOperater operater = new CarIndexAddOperater();
+        operater.execute(paramsMap);
     }
 
     //删除车源实现

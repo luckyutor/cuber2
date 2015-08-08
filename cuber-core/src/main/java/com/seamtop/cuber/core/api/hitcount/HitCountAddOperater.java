@@ -1,6 +1,6 @@
 package com.seamtop.cuber.core.api.hitcount;
 
-import com.seamtop.cuber.common.entriy.Result;
+import com.seamtop.cuber.common.entriy.ErrorCode;
 import com.seamtop.cuber.core.api.IOperater;
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.HashMap;
  * 增加浏览次数操作
  */
 public class HitCountAddOperater implements IOperater {
-    public Result execute(HashMap<String, Object> paramsMap) {
+    public ErrorCode execute(HashMap<String, Object> paramsMap) {
         return null;
     }
 }

@@ -1,7 +1,8 @@
 package com.seamtop.cuber.common.params;
 
 import com.seamtop.cuber.common.StringUtil;
-import com.seamtop.cuber.common.entriy.Result;
+import com.seamtop.cuber.common.entriy.ErrorCode;
+import com.seamtop.cuber.common.exception.CuberParamsProcessException;
 
 import java.util.HashMap;
 
@@ -11,16 +12,15 @@ import java.util.HashMap;
  */
 public class ParamsCalibration {
 
-    public static Result calibration(int caliType,HashMap<String,Object> paramMap){
-        Result result = null;
+    public static void calibration(int caliType,HashMap<String,Object> paramMap) throws Exception{
+        Boolean result = null;
         switch (caliType){
             case CalibrationConstants.API_ADD_CAR_INDEX:
-                result = caliAddCarParamsCali(paramMap);
+                caliAddCarParamsCali(paramMap);
                 break;
             case 2:
                 break;
         }
-        return null;
     }
 
     /**
@@ -28,19 +28,18 @@ public class ParamsCalibration {
      * @param paramsMap
      * @return
      */
-    public static Result caliAddCarParamsCali(HashMap<String,Object> paramsMap){
+    public static  void caliAddCarParamsCali(HashMap<String,Object> paramsMap) throws Exception{
         if(paramsMap == null || paramsMap.size() == 0){
-            return new Result(Result.PARAMS_IS_NULL,null);
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,null).toString());
         }
 
         //carId不可为空且必须为数字
         Object oCarId = paramsMap.get("car_id");
         if(StringUtil.isEmpty((String)oCarId)){
-            return new Result(Result.PARAMS_IS_NULL,"car_id");
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,"car_id").toString());
         }
         if(!StringUtil.isDigital((String)oCarId)){
-            return new Result(Result.PARAMS_FORMAT_ERROR,"car_id");
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,"car_id").toString());
         }
-        return new Result(Result.SUCCESS);
     }
 }

@@ -9,14 +9,15 @@ import java.util.HashMap;
  */
 public class TestMain {
     public static void main(String [] args){
-        HashMap<String,Object> pramsMap = new HashMap<String, Object>();
-        pramsMap.put("car_id", "-10001");
-        pramsMap.put("province", "110000");
+        HashMap<String,Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("car_id","1");
         try{
-            CuberClient.INSTANCE.addCarIndex(pramsMap);
+            CuberClient.INSTANCE.addCarIndex(paramsMap);
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
 
     }
 }

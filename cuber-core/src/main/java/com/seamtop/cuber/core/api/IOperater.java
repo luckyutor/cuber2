@@ -1,6 +1,6 @@
 package com.seamtop.cuber.core.api;
 
-import com.seamtop.cuber.common.entriy.Result;
+import com.seamtop.cuber.common.entriy.ErrorCode;
 
 import java.util.HashMap;
 
@@ -9,5 +9,5 @@ import java.util.HashMap;
  */
 public interface IOperater {
 
-    public Result execute(HashMap<String,Object> paramsMap);
+    public ErrorCode execute(HashMap<String,Object> paramsMap);
 }
