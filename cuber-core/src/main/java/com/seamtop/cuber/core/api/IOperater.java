@@ -9,5 +9,5 @@ import java.util.HashMap;
  */
 public interface IOperater {
 
-    public void execute(HashMap<String,String> paramsMap);
+    public void execute(int apiType,HashMap<String,String> paramsMap) throws Exception;
 }

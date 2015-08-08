@@ -1,4 +1,4 @@
-package com.seamtop.cuber.common.params;
+package com.seamtop.cuber.core.api;
 
 /**
  * Created by feng on 2015/8/8.
