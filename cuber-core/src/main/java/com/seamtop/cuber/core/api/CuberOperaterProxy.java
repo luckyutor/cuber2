@@ -17,13 +17,14 @@ public class CuberOperaterProxy implements InvocationHandler{
 
     public Object bind(Object target) {
         this.target = target;
-        //取得代理对象
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                target.getClass().getInterfaces(), this);   //要绑定接口(这是一个缺陷，cglib弥补了这一缺陷)
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(), this);
     }
 
     public Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
+        //判断是否启用cuber服务
+
+        //统一访问权限认证(暂略)
         //执行主体方法
         Object result=method.invoke(target, args);
         return result;

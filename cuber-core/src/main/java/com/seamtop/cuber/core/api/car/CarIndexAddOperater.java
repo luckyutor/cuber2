@@ -10,8 +10,7 @@ import java.util.HashMap;
  */
 public class CarIndexAddOperater implements IOperater {
 
-    public ErrorCode execute(HashMap<String,String> paramsMap){
-        System.out.println("增加车源方法--" + paramsMap);
-        return null;
+    public void execute(HashMap<String,String> paramsMap){
+
     }
 }
