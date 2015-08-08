@@ -22,7 +22,6 @@ public class RealityOperater implements IOperater {
         ParamsCalibration.calibration(apiType, paramsMap);
         //判断是及时发送还是定时发送
         String mode = CuberConfiger.cuberConfigProperties.getProperty("send.message.mode");
-        System.out.println("mode:"+mode);
         if("intime".equals(mode)){//及时发送消息
             String json = JSONObject.toJSONString(paramsMap);
             QueueSender sender = new KafkaQueueSender();
