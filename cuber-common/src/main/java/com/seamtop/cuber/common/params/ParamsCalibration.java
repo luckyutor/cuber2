@@ -95,5 +95,51 @@ public class ParamsCalibration {
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.MODEL_ID).toString());
         }
 
+        //trimmId不可为空，且必须为数字
+        String trimmIdStr = paramsMap.get(ParamsContants.TRIMM_ID);
+        if(StringUtil.isEmpty(trimmIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.TRIMM_ID).toString());
+        }
+        if(!StringUtil.isDigital(trimmIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.TRIMM_ID).toString());
+        }
+
+        //price不可为空，且必须为double类型
+        String priceStr = paramsMap.get(ParamsContants.PRICE);
+        if(StringUtil.isEmpty(priceStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.PRICE).toString());
+        }
+        if(!StringUtil.isDouble(priceStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.PRICE).toString());
+        }
+
+        //color不可为空，且必须为中文
+        String colorStr = paramsMap.get(ParamsContants.COLOR);
+        if(StringUtil.isEmpty(colorStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.COLOR).toString());
+        }
+        if(!StringUtil.isChinese(colorStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.COLOR).toString());
+        }
+
+        //createDate发布日期，不可为空，必须为时间戳
+        String createDateStr = paramsMap.get(ParamsContants.CREATE_DATE);
+        if(StringUtil.isEmpty(createDateStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.CREATE_DATE).toString());
+        }
+        if(!DateUtil.isTimeStampBeforeNow(createDateStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.CREATE_DATE).toString());
+        }
+
+        //商户ID,不可为空，必须为数字
+        //brandId不可为空，且必须为数字
+        String dealerIdStr = paramsMap.get(ParamsContants.DEALER_ID);
+        if(StringUtil.isEmpty(dealerIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.DEALER_ID).toString());
+        }
+        if(!StringUtil.isDigital(dealerIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.DEALER_ID).toString());
+        }
+
     }
 }

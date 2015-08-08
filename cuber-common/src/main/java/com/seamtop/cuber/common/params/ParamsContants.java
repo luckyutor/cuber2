@@ -26,4 +26,6 @@ public class ParamsContants {
     public static final String DEALER_ID = "dealer_id";
 
     public static final String CREATE_DATE = "create_date";
+
+    public static final String COLOR = "color";
 }

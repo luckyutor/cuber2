@@ -1,5 +1,6 @@
 package com.seamtop.cuber.common.util;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -18,6 +19,18 @@ public class StringUtil {
         }else{
             return false;
         }
+    }
+
+    public static boolean isChinese(String str) {
+        if(StringUtil.isEmpty(str)){
+            return false;
+        }
+        Pattern pattern = Pattern.compile("^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]){2,5}$");
+        Matcher matcher = pattern.matcher(str);
+        if(matcher.find()){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -46,4 +59,7 @@ public class StringUtil {
         return pattern.matcher(str).matches();
     }
 
+    public static void main(String [] args){
+        System.out.println(isChinese("1中文"));
+    }
 }
