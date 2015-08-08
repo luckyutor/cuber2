@@ -11,6 +11,6 @@ import java.util.HashMap;
 public class CarIndexAddOperater implements IOperater {
 
     public void execute(HashMap<String,String> paramsMap){
-
+        System.out.println("add car index info --");
     }
 }

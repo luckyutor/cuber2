@@ -1,12 +1,9 @@
 package com.seamtop.cuber.core.api;
 
-import com.seamtop.cuber.common.params.CalibrationConstants;
-import com.seamtop.cuber.common.params.ParamsCalibration;
-
+import javax.security.auth.login.Configuration;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.HashMap;
 
 /**
  * Created by feng on 2015/8/8.
@@ -23,6 +20,13 @@ public class CuberOperaterProxy implements InvocationHandler{
     public Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
         //判断是否启用cuber服务
+        if(CuberConfiger.cuberConfigProperties == null){
+            CuberConfiger.loadConfiguration();
+        }
+
+        if("false".equals(CuberConfiger.cuberConfigProperties.get("cuber.flag"))){
+            return null;
+        }
 
         //统一访问权限认证(暂略)
         //执行主体方法

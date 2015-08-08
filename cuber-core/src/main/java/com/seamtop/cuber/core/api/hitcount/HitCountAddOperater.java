@@ -10,7 +10,6 @@ import java.util.HashMap;
  * 增加浏览次数操作
  */
 public class HitCountAddOperater implements IOperater {
-    public ErrorCode execute(HashMap<String, String> paramsMap) {
-        return null;
+    public void execute(HashMap<String, String> paramsMap) {
     }
 }
