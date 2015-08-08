@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Created by feng on 2015/8/8.
  */
 public class CarIndexQueryOperater implements IOperater {
-    public ErrorCode execute(HashMap<String, Object> paramsMap) {
+    public ErrorCode execute(HashMap<String, String> paramsMap) {
         return null;
     }
 }

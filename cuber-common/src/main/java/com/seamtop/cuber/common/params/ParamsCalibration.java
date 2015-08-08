@@ -12,11 +12,12 @@ import java.util.HashMap;
  */
 public class ParamsCalibration {
 
-    public static void calibration(int caliType,HashMap<String,Object> paramMap) throws Exception{
+    //参数验证
+    public static void calibration(int caliType,HashMap<String,String> paramMap) throws Exception{
         Boolean result = null;
         switch (caliType){
             case CalibrationConstants.API_ADD_CAR_INDEX:
-                caliAddCarParamsCali(paramMap);
+                caliAddCarParams(paramMap);
                 break;
             case 2:
                 break;
@@ -28,18 +29,31 @@ public class ParamsCalibration {
      * @param paramsMap
      * @return
      */
-    public static  void caliAddCarParamsCali(HashMap<String,Object> paramsMap) throws Exception{
+    public static  void caliAddCarParams(HashMap<String,String> paramsMap) throws Exception{
         if(paramsMap == null || paramsMap.size() == 0){
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,null).toString());
         }
 
         //carId不可为空且必须为数字
-        Object oCarId = paramsMap.get("car_id");
-        if(StringUtil.isEmpty((String)oCarId)){
-            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,"car_id").toString());
+        String carIdStr = paramsMap.get(ParamsContants.CAR_ID);
+        if(StringUtil.isEmpty(carIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.CAR_ID).toString());
         }
-        if(!StringUtil.isDigital((String)oCarId)){
-            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,"car_id").toString());
+        if(!StringUtil.isDigital(carIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.CAR_ID).toString());
         }
+
+        //province不可为空且必须为数字
+        String provinceIdStr = paramsMap.get(ParamsContants.PROVINCE_ID);
+        if(StringUtil.isEmpty(provinceIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.PROVINCE_ID).toString());
+        }
+        if(!StringUtil.isDigital(provinceIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.PROVINCE_ID).toString());
+        }
+
+
+
+
     }
 }
