@@ -24,7 +24,7 @@ public class CuberOperaterProxy implements InvocationHandler{
         if(CuberConfiger.cuberConfigProperties == null){
             CuberConfiger.loadConfiguration();
         }
-        System.out.println(CuberConfiger.cuberConfigProperties.get("cuber.flag"));
+
         if("false".equals(CuberConfiger.cuberConfigProperties.get("cuber.flag"))){
             return null;
         }
