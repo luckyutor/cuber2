@@ -34,9 +34,16 @@ public class StringUtil {
         }
     }
 
-    public static void main(String [] args){
-        boolean s = isDigital("0008");
-        Object o = null;
-        System.out.println(o);
+    /**
+     * 判断是否为double
+     * @param str
+     * @return
+     */
+    public static boolean isDouble(String str){
+        if(str==null || "".equals(str))
+            return false;
+        Pattern pattern = Pattern.compile("[1-9]+(\\.?)[0-9]*");
+        return pattern.matcher(str).matches();
     }
+
 }

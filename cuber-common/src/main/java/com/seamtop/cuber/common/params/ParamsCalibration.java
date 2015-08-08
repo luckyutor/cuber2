@@ -52,6 +52,19 @@ public class ParamsCalibration {
             throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.PROVINCE_ID).toString());
         }
 
+        //city可为空，必须为数字
+        String cityIdStr = paramsMap.get(ParamsContants.CITY_ID);
+        if(!StringUtil.isEmpty(cityIdStr) && !StringUtil.isDigital(cityIdStr)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_FORMAT_ERROR,ParamsContants.CITY_ID).toString());
+        }
+
+        //mileage不可为空，切必须为正数
+        String mileage = paramsMap.get(ParamsContants.MILEAGE);
+        if(StringUtil.isEmpty(mileage)){
+            throw new CuberParamsProcessException(new ErrorCode(ErrorCode.PARAMS_IS_NULL,ParamsContants.MILEAGE).toString());
+        }
+
+
 
 
 
