@@ -1,11 +1,10 @@
 package com.seamtop.cuber.core.api;
 
 import com.alibaba.fastjson.JSONObject;
-import com.seamtop.cuber.common.entriy.ErrorCode;
-import com.seamtop.cuber.core.api.IOperater;
 import com.seamtop.cuber.core.queue.KafkaQueueSender;
-import com.seamtop.cuber.core.queue.QueueSender;
+import com.seamtop.cuber.core.queue.QueueSenderAdapter;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
@@ -14,7 +13,7 @@ import java.util.HashMap;
  */
 public class RealityOperater implements IOperater {
 
-    private static final Logger LOG = Logger.getLogger(RealityOperater.class);
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(RealityOperater.class);
 
     public void execute(int apiType,HashMap<String,String> paramsMap) throws Exception{
         LOG.debug("CuberClient - invoke method:"+ApiConstants.getDesc(apiType) + " parameter:"+paramsMap);
@@ -24,7 +23,7 @@ public class RealityOperater implements IOperater {
         String mode = CuberConfiger.cuberConfigProperties.getProperty("send.message.mode");
         if("intime".equals(mode)){//及时发送消息
             String json = JSONObject.toJSONString(paramsMap);
-            QueueSender sender = new KafkaQueueSender();
+            QueueSenderAdapter sender = new KafkaQueueSender();
             sender.send(json);
         }else{//定时发送消息
             TaskListBean.taskList.add(paramsMap);
