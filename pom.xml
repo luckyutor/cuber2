@@ -6,9 +6,8 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>cuber-core</module>
+    <module>cuber-client</module>
     <module>cuber-common</module>
-    <module>cuber-storage</module>
   </modules>
   <name>cuber2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
