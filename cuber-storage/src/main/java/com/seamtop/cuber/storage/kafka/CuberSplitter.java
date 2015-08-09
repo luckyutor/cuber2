@@ -37,7 +37,7 @@ public class CuberSplitter extends BaseRichBolt {
 //            collector.emit(input, new Values(word, 1));
 //        }
 //        collector.ack(input);
-        collector.emit(input,new Values("0"));
+        collector.emit(input,new Values(line));
         collector.ack(input);
     }
 
