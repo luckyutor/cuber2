@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/cuber-core/cuber-client.iml" filepath="$PROJECT_DIR$/cuber-core/cuber-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/cuber-common/cuber-common.iml" filepath="$PROJECT_DIR$/cuber-common/cuber-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cuber-core/cuber-core.iml" filepath="$PROJECT_DIR$/cuber-core/cuber-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cuber-storage/cuber-storage.iml" filepath="$PROJECT_DIR$/cuber-storage/cuber-storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/cuber2.iml" filepath="$PROJECT_DIR$/cuber2.iml" />
     </modules>
   </component>

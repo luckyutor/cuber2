@@ -22,13 +22,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="cuber-client" />
         <module name="cuber-common" />
         <module name="cuber-core" />
+        <module name="cuber-storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cuber-client" target="1.5" />
       <module name="cuber-common" target="1.5" />
       <module name="cuber-core" target="1.5" />
+      <module name="cuber-storage" target="1.5" />
       <module name="cuber2" target="1.5" />
     </bytecodeTargetLevel>
   </component>

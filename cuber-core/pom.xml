@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cuber-core</artifactId>
+    <artifactId>cuber-client</artifactId>
     <packaging>jar</packaging>
 
-    <name>cuber-core</name>
+    <name>cuber-client</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -33,6 +33,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 </project>

@@ -8,6 +8,7 @@
   <modules>
     <module>cuber-core</module>
     <module>cuber-common</module>
+    <module>cuber-storage</module>
   </modules>
   <name>cuber2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
