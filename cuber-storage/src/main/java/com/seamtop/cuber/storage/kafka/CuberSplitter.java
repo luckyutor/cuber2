@@ -7,6 +7,8 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
@@ -30,6 +32,7 @@ public class CuberSplitter extends BaseRichBolt {
     public void execute(Tuple input) {
         String line = input.getString(0);
         LOG.info("Cuber Storage - dispose msg:"+ line);
+        JSONObject jsonObject = JSON.parseObject(line);
 
 //        String[] words = line.split("\\s+");
 //        for(String word : words) {
