@@ -4,6 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cuber-client/cuber-client.iml" filepath="$PROJECT_DIR$/cuber-client/cuber-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/cuber-common/cuber-common.iml" filepath="$PROJECT_DIR$/cuber-common/cuber-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cuber-job/cuber-job.iml" filepath="$PROJECT_DIR$/cuber-job/cuber-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cuber-server/cuber-server.iml" filepath="$PROJECT_DIR$/cuber-server/cuber-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cuber-storage/cuber-storage.iml" filepath="$PROJECT_DIR$/cuber-storage/cuber-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cuber-web/cuber-web.iml" filepath="$PROJECT_DIR$/cuber-web/cuber-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/cuber2.iml" filepath="$PROJECT_DIR$/cuber2.iml" />
     </modules>
   </component>

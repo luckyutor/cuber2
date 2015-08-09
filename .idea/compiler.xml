@@ -25,12 +25,19 @@
         <module name="cuber-client" />
         <module name="cuber-common" />
         <module name="cuber-core" />
+        <module name="cuber-job" />
+        <module name="cuber-server" />
         <module name="cuber-storage" />
+        <module name="cuber-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
       <module name="cuber-client" target="1.5" />
       <module name="cuber-common" target="1.5" />
+      <module name="cuber-job" target="1.5" />
+      <module name="cuber-server" target="1.5" />
+      <module name="cuber-storage" target="1.5" />
+      <module name="cuber-web" target="1.5" />
       <module name="cuber2" target="1.5" />
     </bytecodeTargetLevel>
   </component>

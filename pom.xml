@@ -8,6 +8,10 @@
   <modules>
     <module>cuber-client</module>
     <module>cuber-common</module>
+    <module>cuber-storage</module>
+    <module>cuber-web</module>
+    <module>cuber-job</module>
+    <module>cuber-server</module>
   </modules>
   <name>cuber2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
