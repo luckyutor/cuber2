@@ -16,14 +16,24 @@ public class KafkaQueueSender implements QueueSenderAdapter {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaQueueSender.class);
 
+    private volatile static KafkaQueueSender ss = null;
+
     private static kafka.javaapi.producer.Producer<Integer, String> producer;
 
-    /**
-     * 发送kafka客户端消息
-     * @param msg
-     * @return
-     */
-    public void sendKafkaMessage(String msg){
+    private static final String topic = "test";
+
+    public static KafkaQueueSender getInstance(){
+        if(ss ==null){
+            synchronized (KafkaQueueSender.class){
+                if(ss ==null){
+                    ss = new KafkaQueueSender();
+                }
+            }
+        }
+        return ss;
+    }
+
+    private KafkaQueueSender(){
         String metaBrokerList = null;
         if(producer == null){
             Properties kafkaProps = new Properties();
@@ -34,11 +44,18 @@ public class KafkaQueueSender implements QueueSenderAdapter {
         }
         String topic = CuberConfiger.cuberConfigProperties.getProperty("cuber.kafka.topic.name");
         LOG.debug("kafka broker list:" + metaBrokerList + " topic:"+topic);
+    }
+
+    /**
+     * 发送kafka客户端消息
+     * @param msg
+     * @return
+     */
+    public static void sendKafkaMessage(String msg){
         producer.send(new KeyedMessage<Integer, String>(topic, msg));
     }
 
-    public void send(String msg) throws Exception {
-        this.sendKafkaMessage(msg);
-
+    public void send(final String msg) throws Exception {
+        sendKafkaMessage(msg);
     }
 }

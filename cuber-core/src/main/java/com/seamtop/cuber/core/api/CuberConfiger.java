@@ -18,7 +18,9 @@ public class CuberConfiger {
     public static void loadConfiguration() throws Exception{
         String path = CuberConfiger.class.getClassLoader().getResource("").getPath();
         String filePath = path + "cuber_config.properties";
+        System.out.println("filePath:"+filePath);
         LOG.debug("load cuber config file:" + filePath);
         cuberConfigProperties = PropertiesUtil.loadProperties(filePath);
+        System.out.println("cuberConfigProperties:"+cuberConfigProperties);
     }
 }

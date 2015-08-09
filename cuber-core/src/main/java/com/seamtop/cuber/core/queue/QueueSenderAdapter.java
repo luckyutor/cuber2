@@ -5,5 +5,5 @@ package com.seamtop.cuber.core.queue;
  */
 public interface QueueSenderAdapter {
 
-    public void send(String msg) throws Exception;
+    public void send(final String msg) throws Exception;
 }
