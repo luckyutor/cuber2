@@ -52,7 +52,7 @@ public class KafkaQueueSender implements QueueSenderAdapter {
      * @return
      */
     public static void sendKafkaMessage(String msg){
-        msg = "hello world , ni hao a ,xiao hua ";
+        //msg = "hello world , ni hao a ,xiao hua ";
         producer.send(new KeyedMessage<Integer, String>(topic, msg));
     }
 

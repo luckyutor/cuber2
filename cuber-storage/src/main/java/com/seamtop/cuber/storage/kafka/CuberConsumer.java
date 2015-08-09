@@ -1,11 +1,6 @@
 package com.seamtop.cuber.storage.kafka;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.LoggerFactory;
+
 import storm.kafka.BrokerHosts;
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;
@@ -17,19 +12,14 @@ import backtype.storm.StormSubmitter;
 import backtype.storm.generated.AlreadyAliveException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.spout.SchemeAsMultiScheme;
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.TopologyBuilder;
-import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
-import backtype.storm.tuple.Tuple;
-import backtype.storm.tuple.Values;
+
 /**
  * Created by feng on 2015/8/9.
  * Kafka消息队列消费者
  */
-public class CuberKafkaConsumer {
+public class CuberConsumer {
 
     public static void main(String[] args) throws AlreadyAliveException, InvalidTopologyException, InterruptedException {
         String zks = "192.168.126.130:2181";
@@ -45,13 +35,14 @@ public class CuberKafkaConsumer {
         spoutConf.zkPort = 2181;
 
         TopologyBuilder builder = new TopologyBuilder();
-        builder.setSpout("kafka-reader", new KafkaSpout(spoutConf), 5); // Kafka我们创建了一个5分区的Topic，这里并行度设置为5
-        builder.setBolt("word-splitter", new KafkaWordSplitter(), 2).shuffleGrouping("kafka-reader");
-        builder.setBolt("word-counter", new WordCounter()).fieldsGrouping("word-splitter", new Fields("word"));
+        builder.setSpout("kafka-reader", new KafkaSpout(spoutConf), 2); // Kafka我们创建了一个5分区的Topic，这里并行度设置为5
+        builder.setBolt("word-splitter", new CuberSplitter(), 2).globalGrouping("kafka-reader");
+        //builder.setBolt("word-splitter", new CuberSplitter(), 1).shuffleGrouping("kafka-reader");
+        builder.setBolt("word-counter", new WordCounter()).fieldsGrouping("word-splitter", new Fields("line"));
 
         Config conf = new Config();
 
-        String name = CuberKafkaConsumer.class.getSimpleName();
+        String name = CuberConsumer.class.getSimpleName();
         if (args != null && args.length > 0) {
             // Nimbus host name passed from command line
             conf.put(Config.NIMBUS_HOST, args[0]);

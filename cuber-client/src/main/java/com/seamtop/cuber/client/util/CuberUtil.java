@@ -16,6 +16,8 @@ public class CuberUtil {
         task.setTaskData(paramsMap);
         HashMap<String,Object> map = new HashMap<String, Object>();
         map.put("task", task);
-        return JSONObject.toJSONString(map);
+        String s = JSONObject.toJSONString(map);
+        System.out.println("s:"+s);
+        return s;
     }
 }

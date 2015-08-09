@@ -37,7 +37,7 @@ public class CuberTask {
      */
     private long taskTime;
 
-    private long getTaskId() {
+    public long getTaskId() {
         return taskId;
     }
 
@@ -61,7 +61,7 @@ public class CuberTask {
         this.taskData = taskData;
     }
 
-    private long getTaskTime() {
+    public long getTaskTime() {
         return taskTime;
     }
 
