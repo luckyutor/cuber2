@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema>
+    <table id="" name="">
+        <key-generate></key-generate>
+        <table-schema>
+            <family name="family1">
+                <column maxsize="" type="int">province</column>
+                <column maxsize="" type="string">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="string">province</column>
+                <column maxsize="" type="int">province</column>
+                <column maxsize="" type="string">province</column>
+            </family>
+            <family name="family2">
+                <column maxsize="" type="float">province</column>
+                <column maxsize="" type="double">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+            </family>
+            <family name="family3">
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+            </family>
+            <family name="family4">
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+            </family>
+            <family name="family5">
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+            </family>
+            <family name="family6">
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+                <column maxsize="" type="">province</column>
+            </family>
+        </table-schema>
+    </table>
+</schema>
