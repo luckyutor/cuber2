@@ -1,9 +1,10 @@
 package com.seamtop.cuber.client;
 
-import com.seamtop.cuber.client.entriy.ApiConstants;
 import com.seamtop.cuber.client.api.CuberOperaterProxy;
 import com.seamtop.cuber.client.api.IOperater;
 import com.seamtop.cuber.client.api.RealityOperater;
+import com.seamtop.cuber.client.entriy.Message;
+import com.seamtop.cuber.client.entriy.MessageContants;
 
 import java.util.HashMap;
 
@@ -22,7 +23,10 @@ public enum CuberClient {
     public void addCarIndex(final HashMap<String,String> paramsMap) throws Exception{
         CuberOperaterProxy proxy = new CuberOperaterProxy();
         IOperater operater = (IOperater)proxy.bind(new RealityOperater());
-        operater.execute(ApiConstants.ADD_CAR_INDEX,paramsMap);
+        Message message = new Message();
+        message.setMsgType(MessageContants.MSG_ADD_CAR_INDEX);
+        message.setMsgData(paramsMap);
+        operater.execute(message);
     }
 
     //删除车源实现

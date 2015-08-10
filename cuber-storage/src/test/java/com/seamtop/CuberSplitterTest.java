@@ -15,8 +15,9 @@ import java.util.HashMap;
 public class CuberSplitterTest {
     @Test
     public void testCuberSplitter(){
-        String res = "{\"task\":{\"taskData\":{\"sale_price\":\"120000\",\"mileage\":\"1000\",\"province_id\":\"110000\",\"brand_id\":\"191\",\"first_license_date\":\"1439110109842\",\"trimm_id\":\"3700\",\"id\":\"1\",\"city_id\":\"111000\",\"flag\":\"0\",\"create_date\":\"1439110109842\",\"color\":\"黑色\",\"flag_source\":\"0\",\"model_id\":\"2344\",\"dealer_id\":\"110000\"},\"taskId\":143911010995882,\"taskTime\":1439110109958,\"apiType\":1,\"taskSource\":1}}";
+        String res = "{\"task\":{\"taskData\":{\"sale_price\":\"120000\",\"mileage\":\"1000\",\"province_id\":\"110000\",\"brand_id\":\"191\",\"first_license_date\":\"1439177426993\",\"trimm_id\":\"3700\",\"id\":\"1\",\"city_id\":\"111000\",\"flag\":\"0\",\"create_date\":\"1439177426993\",\"color\":\"ab\",\"flag_source\":\"0\",\"model_id\":\"2344\",\"dealer_id\":\"110000\"},\"taskId\":143917742711415,\"taskTime\":1439177427114,\"taskType\":1}}";
         JSONObject taskObject = JSON.parseObject(res);
+        System.out.println("taskObject"+taskObject);
         JSONObject jsonObject = (JSONObject)taskObject.get("task");
         int taskSource = (Integer)jsonObject.get("taskSource");
         System.out.println(taskSource);

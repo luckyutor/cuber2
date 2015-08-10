@@ -32,7 +32,7 @@ public class CuberSplitter extends BaseRichBolt {
     public void execute(Tuple input) {
         String line = input.getString(0);
         LOG.info("Cuber Storage - dispose msg:"+ line);
-        JSONObject jsonObject = JSON.parseObject(line);
+//        JSONObject jsonObject = JSON.parseObject(line);
 
 //        String[] words = line.split("\\s+");
 //        for(String word : words) {

@@ -1,5 +1,6 @@
 package com.seamtop.cuber.client.entriy;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,14 +14,20 @@ public class CuberTask {
     private long taskId;
 
     /**
-     * 任务类型
+     * 任务来源
      */
-    private int taskType;
+    private int taskSource;
+
+    /**
+     * 任务时间
+     */
+    private long taskTime;
 
     /**
      * 任务数据
      */
-    private HashMap<String,String> taskData;
+    private ArrayList<Message> messageList;
+
 
     public CuberTask(){
         long t = Math.round(Math.random() * 100);
@@ -32,40 +39,42 @@ public class CuberTask {
         this.setTaskTime(d.getTime());
     }
 
-    /**
-     * 任务时间
-     */
-    private long taskTime;
-
     public long getTaskId() {
         return taskId;
     }
 
-    private void setTaskId(long taskId) {
+    public void setTaskId(long taskId) {
         this.taskId = taskId;
     }
 
-    public int getTaskType() {
-        return taskType;
+    public int getTaskSource() {
+        return taskSource;
     }
 
-    public void setTaskType(int taskType) {
-        this.taskType = taskType;
-    }
-
-    public HashMap<String, String> getTaskData() {
-        return taskData;
-    }
-
-    public void setTaskData(HashMap<String, String> taskData) {
-        this.taskData = taskData;
+    public void setTaskSource(int taskSource) {
+        this.taskSource = taskSource;
     }
 
     public long getTaskTime() {
         return taskTime;
     }
 
-    private void setTaskTime(long taskTime) {
+    public void setTaskTime(long taskTime) {
         this.taskTime = taskTime;
+    }
+
+    public ArrayList<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(ArrayList<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    public void setMessage(Message message){
+        if(this.messageList == null){
+            messageList = new ArrayList<Message>();
+        }
+        messageList.add(message);
     }
 }

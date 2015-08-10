@@ -1,6 +1,7 @@
 package com.seamtop.cuber.client.util;
 
 import com.seamtop.cuber.client.entriy.ApiConstants;
+import com.seamtop.cuber.client.entriy.Message;
 import com.seamtop.cuber.common.entriy.ErrorCode;
 import com.seamtop.cuber.common.entriy.ParamsContants;
 import com.seamtop.cuber.common.exception.CuberParamsProcessException;
@@ -16,11 +17,12 @@ import java.util.HashMap;
 public class ParamsCalibration {
 
     //参数验证
-    public static void calibration(int caliType,HashMap<String,String> paramMap) throws Exception{
+    public static void calibration(Message message) throws Exception{
         Boolean result = null;
+        int caliType = message.getMsgType();
         switch (caliType){
             case ApiConstants.ADD_CAR_INDEX:
-                caliAddCarParams(paramMap);
+                caliAddCarParams(message.getMsgData());
                 break;
             case 2:
                 break;
