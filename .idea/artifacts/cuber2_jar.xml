@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cuber2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cuber2_jar</output-path>
+    <root id="archive" name="cuber2.jar">
+      <element id="module-output" name="cuber-client" />
+      <element id="module-output" name="cuber-common" />
+      <element id="module-output" name="cuber-job" />
+      <element id="module-output" name="cuber-server" />
+      <element id="module-output" name="cuber-storage" />
+      <element id="module-output" name="cuber-web" />
+      <element id="module-output" name="cuber2" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/Java/jdk1.7.0_71/lib/tools.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.6" />
+    </root>
+  </artifact>
+</component>
