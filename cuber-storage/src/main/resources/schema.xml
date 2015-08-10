@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  该配置文件主要包含：
+  （1）表、列族和列的对应关系
+  （2）表主键KEY的生成方式
+  （3）表操作所对应的API函数
+  （4）字段数据验证方式，不填即不验证。
+  -->
 <schema>
-    <table id="" name="">
-        <key-generate></key-generate>
+    <table name="CUBER_CAR">
+        <table-operate>
+            <add-operter>ADD_CAR_INDEX</add-operter>
+            <delete-operater>DELETE_CAR_INDEX</delete-operater>
+            <update-operater>UPDATE_CAR_INDEX</update-operater>
+        </table-operate>
         <table-schema>
             <family name="family1">
-                <column maxsize="" type="int">province</column>
-                <column maxsize="" type="string">province</column>
-                <column maxsize="" type="">province</column>
-                <column maxsize="" type="string">province</column>
-                <column maxsize="" type="int">province</column>
-                <column maxsize="" type="string">province</column>
+                <column>province</column>
+                <column>province</column>
+                <column>province</column>
+                <column>province</column>
+                <column>province</column>
+                <column>province</column>
             </family>
             <family name="family2">
-                <column maxsize="" type="float">province</column>
-                <column maxsize="" type="double">province</column>
+                <column maxsize="" type="float" isRequired="false">province</column>
+                <column maxsize="" type="double" isRequired="false">province</column>
                 <column maxsize="" type="">province</column>
                 <column maxsize="" type="">province</column>
                 <column maxsize="" type="">province</column>

@@ -1,7 +1,7 @@
 package com.seamtop.cuber.client.util;
 
-import com.seamtop.cuber.client.entriy.ApiConstants;
 import com.seamtop.cuber.client.entriy.Message;
+import com.seamtop.cuber.client.entriy.MessageContants;
 import com.seamtop.cuber.common.entriy.ErrorCode;
 import com.seamtop.cuber.common.entriy.ParamsContants;
 import com.seamtop.cuber.common.exception.CuberParamsProcessException;
@@ -21,7 +21,7 @@ public class ParamsCalibration {
         Boolean result = null;
         int caliType = message.getMsgType();
         switch (caliType){
-            case ApiConstants.ADD_CAR_INDEX:
+            case MessageContants.MSG_ADD_CAR_INDEX:
                 caliAddCarParams(message.getMsgData());
                 break;
             case 2:

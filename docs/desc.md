@@ -1,0 +1,1 @@
+./storm jar cuber-storage.jar com.seamtop.cuber.storage.kafka.CuberConsumer 192.168.126.130

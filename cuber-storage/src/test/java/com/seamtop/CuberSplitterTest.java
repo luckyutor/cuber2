@@ -21,13 +21,26 @@ public class CuberSplitterTest {
         JSONObject jsonObject = (JSONObject)taskObject.get("task");
         int taskSource = (Integer)jsonObject.get("taskSource");
         JSONArray msgArray = (JSONArray)jsonObject.get("messageList");
-        System.out.println("msgArray:"+msgArray);
         switch (taskSource){
             case 1://为客户端API接口
-
+                emitMsg(msgArray);
                 break;
             default:
                 break;
+
+        }
+    }
+
+    public void emitMsg(JSONArray array){
+        for(int i=0;i<array.size();i++){
+            JSONObject jsonObject = (JSONObject)array.get(i);
+            System.out.println(jsonObject);
+            int msgType = (Integer)jsonObject.get("msgType");
+            System.out.println(msgType);
+            switch (msgType){
+                case 1:
+                    
+            }
 
         }
     }
