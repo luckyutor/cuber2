@@ -7,6 +7,7 @@ import com.seamtop.cuber.common.base.DataObject;
 import com.seamtop.cuber.common.exception.ColumnNotExistException;
 import com.seamtop.cuber.common.exception.CuberParamsProcessException;
 import com.seamtop.cuber.common.metadata.Column;
+import com.seamtop.cuber.common.metadata.RowKey;
 import com.seamtop.cuber.common.metadata.TableMetaData;
 import com.seamtop.cuber.common.metadata.ValueTypeContants;
 import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
@@ -96,33 +97,59 @@ public class CuberSplitterTest {
         }
 
         HashMap<String,Column> columnMap = tableMetaData.getColumnMap();
-        for(String param : dataMap.keySet()){
-            //首先判断该参数是否在MetaData中存在
-            Column column = columnMap.get(param);
-            if(column == null){
-                throw new ColumnNotExistException("表"+ tableMetaData.getTableName()+"中列"+param + "不存在");
-            }
-            //是否必填
-            String value = dataMap.get(param);
-            boolean isRequired = column.isIfRequired();
-            if(isRequired && StringUtil.isEmpty(value)){
-                throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "不可为空");
-            }
 
-            //数据类型判断
-            int valueType = column.getColumnType();
-            if(valueType != 0){
-                boolean result = isTypeCorrect(valueType,value);
-                if(!result){
+        for(String param : dataMap.keySet()){
+            //首先判断该字段是否为主键
+            RowKey rowKey = tableMetaData.getRowKey();
+            String value = dataMap.get(param);
+            if(rowKey.getKeyName().equals(param)){//为主键
+                if(StringUtil.isEmpty(value)){
                     throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
+                }
+                //数据类型判断
+                int valueType = rowKey.getKeyType();
+                if(valueType != 0){
+                    boolean result = isTypeCorrect(valueType,value);
+                    if(!result){
+                        throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
+                    }
+                }
+
+                //数据长度判断
+                int maxSize = rowKey.getKeyMaxSize();
+                if(maxSize > 0 && value.length() > maxSize){
+                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
+                }
+            }else {
+                //首先判断该参数是否在MetaData中存在
+                Column column = columnMap.get(param);
+                if(column == null){
+                    throw new ColumnNotExistException("表"+ tableMetaData.getTableName()+"中列"+param + "不存在");
+                }
+                //是否必填
+                ;
+                boolean isRequired = column.isIfRequired();
+                if(isRequired && StringUtil.isEmpty(value)){
+                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "不可为空");
+                }
+
+                //数据类型判断
+                int valueType = column.getColumnType();
+                if(valueType != 0){
+                    boolean result = isTypeCorrect(valueType,value);
+                    if(!result){
+                        throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
+                    }
+                }
+
+                //数据长度判断
+                int maxSize = column.getColumnMaxSize();
+                if(maxSize > 0 && value.length() > maxSize){
+                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
                 }
             }
 
-            //数据长度判断
-            int maxSize = column.getColumnMaxSize();
-            if(maxSize > 0 && value.length() > maxSize){
-                throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
-            }
+
         }
 
         return false;
