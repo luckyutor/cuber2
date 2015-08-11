@@ -38,14 +38,11 @@ public class CuberSplitterTest {
     public void emitMsg(JSONArray array) throws Exception{
         for(int i=0;i<array.size();i++){
             JSONObject jsonObject = (JSONObject)array.get(i);
-            System.out.println(jsonObject);
             String msgType = jsonObject.getString("msgType");
             JSONObject dataObject = jsonObject.getJSONObject("msgData");
             HashMap<String,String> dataMap = JSONUtil.jsonToMap(dataObject);
             TableOperatorBean operatorBean = DataObject.INSTANCE.operatorDataMap.get(msgType);
-            System.out.println(operatorBean.getOperatorName() + " " + operatorBean.getOperatorType() + " " + operatorBean.getOperatorTable());
             TableMetaData tableMetaData = DataObject.INSTANCE.metaDataMap.get(operatorBean.getOperatorTable());
-            System.out.println("msgType"+msgType);
             List<Put> putList = getPutList(dataMap,tableMetaData);
             Configuration conf = HBaseConfiguration.create();
             HTable table = new HTable(conf,tableMetaData.getTableName());
@@ -67,6 +64,7 @@ public class CuberSplitterTest {
             String columnName = column.getColumnName();
             String value = dataMap.get(columnName);
             System.out.println("value"+value);
+            System.out.println("rowKey:"+rowKey);
             Put p = new Put(Bytes.toBytes(rowKey));
             p.add(Bytes.toBytes(column.getFamilyName()),Bytes.toBytes(columnName),Bytes.toBytes(value));
             list.add(p);
