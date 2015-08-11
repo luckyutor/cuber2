@@ -33,7 +33,12 @@ import java.util.List;
 public class CuberSplitterTest {
     @Test
     public void testCuberSplitter() throws Exception{
-        String res = "{\"task\":{\"messageList\":[{\"msgData\":{\"sale_price\":\"120000\",\"mileage\":\"1000\",\"province_id\":\"110000\",\"brand_id\":\"191\",\"first_license_date\":\"1439272017637\",\"trimm_id\":\"3700\",\"id\":\"1\",\"city_id\":\"111000\",\"flag\":\"0\",\"create_date\":\"1439272017637\",\"color\":\"黑色\",\"flag_source\":\"0\",\"model_id\":\"2344\",\"dealer_id\":\"110000\"},\"msgType\":\"ADD_CAR_INDEX\"}],\"taskId\":143927201774758,\"taskSource\":1,\"taskTime\":1439272017747}}";
+        String res = "{\"task\":{\"messageList\":[{\"msgData\":{\"sale_price\":\"120000\",\"mileage\":\"1000\"," +
+                "\"province_id\":\"110000\",\"brand_id\":\"191\",\"license_date\":\"1439272017637\"," +
+                "\"trimm_id\":\"3700\",\"car_id\":\"1\",\"city_id\":\"111000\",\"flag\":\"0\"," +
+                "\"create_date\":\"1439272017637\",\"color\":\"黑色\",\"flag_source\":\"0\",\"model_id\":" +
+                "\"2344\",\"dealer_id\":\"110000\"},\"msgType\":\"ADD_CAR_INDEX\"}]," +
+                "\"taskId\":143927201774758,\"taskSource\":1,\"taskTime\":1439272017747}}";
         JSONObject taskObject = JSON.parseObject(res);
         JSONObject jsonObject = (JSONObject)taskObject.get("task");
         JSONArray msgArray = (JSONArray)jsonObject.get("messageList");
@@ -48,11 +53,12 @@ public class CuberSplitterTest {
             HashMap<String,String> dataMap = JSONUtil.jsonToMap(dataObject);
             TableOperatorBean operatorBean = DataObject.INSTANCE.operatorDataMap.get(msgType);
             TableMetaData tableMetaData = DataObject.INSTANCE.metaDataMap.get(operatorBean.getOperatorTable());
-            List<Put> putList = getPutList(dataMap,tableMetaData);
-            Configuration conf = HBaseConfiguration.create();
-            HTable table = new HTable(conf,tableMetaData.getTableName());
-            table.put(putList);
-            table.close();
+            this.caliAddOperatorParams(dataMap,tableMetaData);
+//            List<Put> putList = getPutList(dataMap,tableMetaData);
+//            Configuration conf = HBaseConfiguration.create();
+//            HTable table = new HTable(conf,tableMetaData.getTableName());
+//            table.put(putList);
+//            table.close();
         }
     }
 

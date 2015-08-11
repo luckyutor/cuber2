@@ -8,13 +8,17 @@
   -->
 <schema>
     <table name="CUBER_CAR">
-        <table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen">car_id</table-key>
+        <table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen" />
         <table-columns>
             <family name="base_family">
+                <column maxsize="" type="int" isRequired="true" desc="车源ID">car_id</column>
+                <column maxsize="" type="float" isRequired="true" desc="售价">sale_price</column>
+                <column maxsize="" type="int" isRequired="true" desc="里程">mileage</column>
                 <column maxsize="" type="int" isRequired="true" desc="省份">province_id</column>
                 <column maxsize="" type="int" isRequired="true" desc="城市">city_id</column>
                 <column maxsize="" type="int" isRequired="true" desc="品牌">brand_id</column>
                 <column maxsize="" type="int" isRequired="true" desc="车型">model_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="车款">trimm_id</column>
             </family>
         </table-columns>
     </table>

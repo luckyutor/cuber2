@@ -17,7 +17,7 @@ public class CuberClientTest {
         paramsMap.put("id","1");
         paramsMap.put("province_id","110000");
         paramsMap.put("city_id","111000");
-        paramsMap.put("first_license_date",new Date().getTime()+"");
+        paramsMap.put("license_date",new Date().getTime()+"");
         paramsMap.put("brand_id","191");
         paramsMap.put("model_id","2344");
         paramsMap.put("trimm_id","3700");
