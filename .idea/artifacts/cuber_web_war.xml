@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="cuber-web:war">
-    <output-path>$PROJECT_DIR$/cuber-web/target</output-path>
-    <root id="archive" name="cuber-web.war">
-      <element id="artifact" artifact-name="cuber-web:war exploded" />
-    </root>
-  </artifact>
-</component>
