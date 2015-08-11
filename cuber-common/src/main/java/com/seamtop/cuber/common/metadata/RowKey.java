@@ -18,12 +18,12 @@ public class RowKey {
     /**
      * 字段类型
      */
-    private String keyType;
+    private int keyType;
 
     /**
      * 字段字符长度
      */
-    private String keyMaxSize;
+    private int keyMaxSize;
 
     public String getKeyName() {
         return keyName;
@@ -41,19 +41,19 @@ public class RowKey {
         this.keyDesc = keyDesc;
     }
 
-    public String getKeyType() {
+    public int getKeyType() {
         return keyType;
     }
 
-    public void setKeyType(String keyType) {
+    public void setKeyType(int keyType) {
         this.keyType = keyType;
     }
 
-    public String getKeyMaxSize() {
+    public int getKeyMaxSize() {
         return keyMaxSize;
     }
 
-    public void setKeyMaxSize(String keyMaxSize) {
+    public void setKeyMaxSize(int keyMaxSize) {
         this.keyMaxSize = keyMaxSize;
     }
 }

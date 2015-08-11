@@ -8,14 +8,12 @@
   -->
 <schema>
     <table name="CUBER_CAR">
-        <table-operate>
-            <add-operter>ADD_CAR_INDEX</add-operter>
-            <delete-operater>DELETE_CAR_INDEX</delete-operater>
-            <update-operater>UPDATE_CAR_INDEX</update-operater>
-        </table-operate>
-        <table-key>
-            <key maxsize="" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen">car_id</key>
-        </table-key>
+        <table-operator>
+            <add-operator>ADD_CAR_INDEX</add-operator>
+            <delete-operator>DELETE_CAR_INDEX</delete-operator>
+            <update-operator>UPDATE_CAR_INDEX</update-operator>
+        </table-operator>
+        <table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen">car_id</table-key>
         <table-columns>
             <family name="base_family">
                 <column maxsize="" type="int" isRequired="true" desc="省份">province_id</column>

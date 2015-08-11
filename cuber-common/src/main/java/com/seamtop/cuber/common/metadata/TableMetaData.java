@@ -28,5 +28,37 @@ public class TableMetaData {
     /**
      * 表操作者对象
      */
-    private HashMap<String,Integer> operaterMap;
+    private HashMap<String,Integer> operatorMap;
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public RowKey getRowKey() {
+        return rowKey;
+    }
+
+    public void setRowKey(RowKey rowKey) {
+        this.rowKey = rowKey;
+    }
+
+    public HashMap<String, List<Column>> getTableMetaData() {
+        return tableMetaData;
+    }
+
+    public void setTableMetaData(HashMap<String, List<Column>> tableMetaData) {
+        this.tableMetaData = tableMetaData;
+    }
+
+    public HashMap<String, Integer> getOperatorMap() {
+        return operatorMap;
+    }
+
+    public void setOperatorMap(HashMap<String, Integer> operatorMap) {
+        this.operatorMap = operatorMap;
+    }
 }
