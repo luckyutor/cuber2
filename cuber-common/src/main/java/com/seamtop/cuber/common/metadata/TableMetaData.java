@@ -22,7 +22,7 @@ public class TableMetaData {
     /**
      * 列族以及列族对应的列
      */
-    private List<Column> columnList;
+    private HashMap<String,Column> columnMap;
 
     /**
      * 表操作者对象
@@ -45,12 +45,12 @@ public class TableMetaData {
         this.rowKey = rowKey;
     }
 
-    public List<Column> getColumnList() {
-        return columnList;
+    public HashMap<String, Column> getColumnMap() {
+        return columnMap;
     }
 
-    public void setColumnList(List<Column> columnList) {
-        this.columnList = columnList;
+    public void setColumnMap(HashMap<String, Column> columnMap) {
+        this.columnMap = columnMap;
     }
 
     public HashMap<String, Integer> getOperatorMap() {
