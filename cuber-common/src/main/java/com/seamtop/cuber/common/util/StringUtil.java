@@ -22,15 +22,6 @@ public class StringUtil {
         }
     }
 
-    /**
-     * 判断是否为日期
-     * @param str
-     * @return
-     */
-    public static boolean isTimeStamp(String str){
-
-    }
-
     public static boolean isChinese(String str) {
         if(StringUtil.isEmpty(str)){
             return false;
