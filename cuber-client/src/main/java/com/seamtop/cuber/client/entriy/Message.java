@@ -7,15 +7,15 @@ import java.util.HashMap;
  */
 public class Message {
 
-    private int msgType;
+    private String msgType;
 
     private HashMap<String,String> msgData;
 
-    public int getMsgType() {
+    public String getMsgType() {
         return msgType;
     }
 
-    public void setMsgType(int msgType) {
+    public void setMsgType(String msgType) {
         this.msgType = msgType;
     }
 

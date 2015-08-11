@@ -19,13 +19,9 @@ public class ParamsCalibration {
     //参数验证
     public static void calibration(Message message) throws Exception{
         Boolean result = null;
-        int caliType = message.getMsgType();
-        switch (caliType){
-            case MessageContants.MSG_ADD_CAR_INDEX:
-                caliAddCarParams(message.getMsgData());
-                break;
-            case 2:
-                break;
+        String caliType = message.getMsgType();
+        if(MessageContants.MSG_ADD_CAR_INDEX.equals(caliType)){
+            caliAddCarParams(message.getMsgData());
         }
     }
 
