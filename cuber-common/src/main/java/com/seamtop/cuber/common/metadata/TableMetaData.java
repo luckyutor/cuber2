@@ -16,6 +16,11 @@ public class TableMetaData {
     private String tableName;
 
     /**
+     * 主键信息
+     */
+    private RowKey rowKey;
+
+    /**
      * 列族以及列族对应的列
      */
     private HashMap<String,List<Column>> tableMetaData;

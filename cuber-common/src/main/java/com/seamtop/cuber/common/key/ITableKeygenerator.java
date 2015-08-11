@@ -5,5 +5,5 @@ package com.seamtop.cuber.common.key;
  */
 public interface ITableKeygenerator {
 
-    public String getKey();
+    public String getCuberCarKey(Object object);
 }

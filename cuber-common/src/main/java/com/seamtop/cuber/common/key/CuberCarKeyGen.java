@@ -5,9 +5,7 @@ package com.seamtop.cuber.common.key;
  */
 public class CuberCarKeyGen implements ITableKeygenerator {
 
-
-    @Override
-    public String getKey() {
+    public String getCuberCarKey(Object object) {
 
         return null;
     }
