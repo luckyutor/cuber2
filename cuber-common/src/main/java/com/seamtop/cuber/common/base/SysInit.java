@@ -5,13 +5,14 @@ import com.seamtop.cuber.common.metadata.Column;
 import com.seamtop.cuber.common.metadata.RowKey;
 import com.seamtop.cuber.common.metadata.TableMetaData;
 import com.seamtop.cuber.common.metadata.ValueTypeContants;
+import com.seamtop.cuber.common.tableoperator.OperatorType;
+import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
 import com.seamtop.cuber.common.util.StringUtil;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,12 +22,12 @@ import java.util.List;
 public class SysInit {
 
     public static void main(String [] args){
-        loadTableSchema();
+        loadTableOperator();
     }
 
     public static HashMap<String,TableMetaData> loadTableSchema(){
         String path = SysInit.class.getClassLoader().getResource("").getPath();
-        String filePath = path + "schema.xml";
+        String filePath = path + "table-schema.xml";
         HashMap<String,TableMetaData> metaDataMap = null;
         try {
             metaDataMap = loadTableSchema(filePath);
@@ -36,15 +37,59 @@ public class SysInit {
         return metaDataMap;
     }
 
-    public static HashMap<String,TableMetaData> loadTableSchema(String filePath) throws Exception{
 
-        SAXReader saxReader = new SAXReader();
-        Document document = null;
-        try{
-            document = saxReader.read(new File(filePath));
+    public static HashMap<String,TableOperatorBean> loadTableOperator(){
+        String path = SysInit.class.getClassLoader().getResource("").getPath();
+        String filePath = path + "table-operator.xml";
+        HashMap<String,TableOperatorBean> operatorDataMap = null;
+        try {
+            operatorDataMap = loadTableOperator(filePath);
         }catch (Exception e){
             e.printStackTrace();
         }
+        return operatorDataMap;
+    }
+
+
+    public static HashMap<String,TableOperatorBean> loadTableOperator(String filePath) throws Exception{
+        SAXReader saxReader = new SAXReader();
+        Document document = saxReader.read(new File(filePath));
+        // 获取根元素
+        Element root = document.getRootElement();
+        List<Element> tableList = root.elements();
+        HashMap<String,TableOperatorBean> tableOperatorMap = new HashMap<String, TableOperatorBean>();
+        for(int i=0;i<tableList.size();i++){
+            Element e = tableList.get(i);
+            Element tableOperatorElement = e.element("table-operator"); //设置表操作对象
+
+            Element element = tableOperatorElement.element("add-operator");
+            TableOperatorBean addOperatorBean = new TableOperatorBean();
+            addOperatorBean.setOperatorName(element.getStringValue());
+            addOperatorBean.setOperatorTable(e.attributeValue("name"));
+            addOperatorBean.setOperatorType(OperatorType.TABLE_OPERATOR_TYPE_ADD);
+            tableOperatorMap.put(element.getStringValue(),addOperatorBean);
+
+            element = tableOperatorElement.element("delete-operator");
+            TableOperatorBean deleteOperatorBean = new TableOperatorBean();
+            deleteOperatorBean.setOperatorName(element.getStringValue());
+            deleteOperatorBean.setOperatorTable(e.attributeValue("name"));
+            deleteOperatorBean.setOperatorType(OperatorType.TABLE_OPERATOR_TYPE_DELETE);
+            tableOperatorMap.put(element.getStringValue(),deleteOperatorBean);
+
+            element = tableOperatorElement.element("update-operator");
+            TableOperatorBean updateOperatorBean = new TableOperatorBean();
+            updateOperatorBean.setOperatorName(element.getStringValue());
+            updateOperatorBean.setOperatorTable(e.attributeValue("name"));
+            updateOperatorBean.setOperatorType(OperatorType.TABLE_OPERATOR_TYPE_UPDATE);
+            tableOperatorMap.put(element.getStringValue(),updateOperatorBean);
+        }
+        return tableOperatorMap;
+    }
+
+
+    public static HashMap<String,TableMetaData> loadTableSchema(String filePath) throws Exception{
+        SAXReader saxReader = new SAXReader();
+        Document document = saxReader.read(new File(filePath));
         // 获取根元素
         Element root = document.getRootElement();
         List<Element> tableList = root.elements();
@@ -56,15 +101,15 @@ public class SysInit {
             String tableName = e.attributeValue("name");
             tableMetaData.setTableName(tableName);
             //设置表操作者
-            HashMap<String,Integer> tablerOperatorMap = new HashMap<String, Integer>();
-            Element tableOperatorElement = e.element("table-operator"); //设置表操作对象
-            Element addElement = tableOperatorElement.element("add-operator");
-            tablerOperatorMap.put(addElement.getStringValue(),0);//表数据增加操作者
-            Element deleteElement = tableOperatorElement.element("delete-operator");
-            tablerOperatorMap.put(deleteElement.getStringValue(),1);//表数据删除操作者
-            Element updateElement = tableOperatorElement.element("update-operator");
-            tablerOperatorMap.put(updateElement.getStringValue(),2);//表数据增加操作者
-            tableMetaData.setOperatorMap(tablerOperatorMap);
+//            HashMap<String,Integer> tablerOperatorMap = new HashMap<String, Integer>();
+//            Element tableOperatorElement = e.element("table-operator"); //设置表操作对象
+//            Element addElement = tableOperatorElement.element("add-operator");
+//            tablerOperatorMap.put(addElement.getStringValue(),0);//表数据增加操作者
+//            Element deleteElement = tableOperatorElement.element("delete-operator");
+//            tablerOperatorMap.put(deleteElement.getStringValue(),1);//表数据删除操作者
+//            Element updateElement = tableOperatorElement.element("update-operator");
+//            tablerOperatorMap.put(updateElement.getStringValue(),2);//表数据增加操作者
+//            tableMetaData.setOperatorMap(tablerOperatorMap);
             //设置主键数据
             Element keyElement = e.element("table-key");
             RowKey rowKey = new RowKey();

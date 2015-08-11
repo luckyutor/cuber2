@@ -24,10 +24,6 @@ public class TableMetaData {
      */
     private HashMap<String,Column> columnMap;
 
-    /**
-     * 表操作者对象
-     */
-    private HashMap<String,Integer> operatorMap;
 
     public String getTableName() {
         return tableName;
@@ -51,13 +47,5 @@ public class TableMetaData {
 
     public void setColumnMap(HashMap<String, Column> columnMap) {
         this.columnMap = columnMap;
-    }
-
-    public HashMap<String, Integer> getOperatorMap() {
-        return operatorMap;
-    }
-
-    public void setOperatorMap(HashMap<String, Integer> operatorMap) {
-        this.operatorMap = operatorMap;
     }
 }

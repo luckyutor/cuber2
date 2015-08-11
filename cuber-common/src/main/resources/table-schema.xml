@@ -8,11 +8,6 @@
   -->
 <schema>
     <table name="CUBER_CAR">
-        <table-operator>
-            <add-operator>ADD_CAR_INDEX</add-operator>
-            <delete-operator>DELETE_CAR_INDEX</delete-operator>
-            <update-operator>UPDATE_CAR_INDEX</update-operator>
-        </table-operator>
         <table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen">car_id</table-key>
         <table-columns>
             <family name="base_family">

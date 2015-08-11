@@ -1,6 +1,7 @@
 package com.seamtop.cuber.common.base;
 
 import com.seamtop.cuber.common.metadata.TableMetaData;
+import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,4 +16,5 @@ public enum DataObject{
     public final static HashMap<String,TableMetaData> metaDataMap = SysInit.loadTableSchema();
 
 
+    public final static HashMap<String,TableOperatorBean> operatorDataMap = SysInit.loadTableOperator();
 }
