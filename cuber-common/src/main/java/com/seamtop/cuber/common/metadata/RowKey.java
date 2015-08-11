@@ -21,6 +21,11 @@ public class RowKey {
     private int keyType;
 
     /**
+     * 主键生成策略
+     */
+    private String keyGenerator;
+
+    /**
      * 字段字符长度
      */
     private int keyMaxSize;
@@ -55,5 +60,13 @@ public class RowKey {
 
     public void setKeyMaxSize(int keyMaxSize) {
         this.keyMaxSize = keyMaxSize;
+    }
+
+    public String getKeyGenerator() {
+        return keyGenerator;
+    }
+
+    public void setKeyGenerator(String keyGenerator) {
+        this.keyGenerator = keyGenerator;
     }
 }

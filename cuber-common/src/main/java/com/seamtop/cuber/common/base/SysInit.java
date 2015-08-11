@@ -88,7 +88,6 @@ public class SysInit {
 
 
     public static HashMap<String,TableMetaData> loadTableSchema(String filePath) throws Exception{
-        System.out.println("---------------------------------aaaa"+filePath);
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(new File(filePath));
         // 获取根元素
@@ -101,16 +100,6 @@ public class SysInit {
             //设置表名
             String tableName = e.attributeValue("name");
             tableMetaData.setTableName(tableName);
-            //设置表操作者
-//            HashMap<String,Integer> tablerOperatorMap = new HashMap<String, Integer>();
-//            Element tableOperatorElement = e.element("table-operator"); //设置表操作对象
-//            Element addElement = tableOperatorElement.element("add-operator");
-//            tablerOperatorMap.put(addElement.getStringValue(),0);//表数据增加操作者
-//            Element deleteElement = tableOperatorElement.element("delete-operator");
-//            tablerOperatorMap.put(deleteElement.getStringValue(),1);//表数据删除操作者
-//            Element updateElement = tableOperatorElement.element("update-operator");
-//            tablerOperatorMap.put(updateElement.getStringValue(),2);//表数据增加操作者
-//            tableMetaData.setOperatorMap(tablerOperatorMap);
             //设置主键数据
             Element keyElement = e.element("table-key");
             RowKey rowKey = new RowKey();
@@ -118,8 +107,8 @@ public class SysInit {
             rowKey.setKeyDesc(keyElement.attributeValue("desc"));
             rowKey.setKeyMaxSize(Integer.parseInt(keyElement.attributeValue("maxsize")));
             rowKey.setKeyType(getKeyType(keyElement.attributeValue("type")));
+            rowKey.setKeyGenerator(keyElement.attributeValue("generator"));
             tableMetaData.setRowKey(rowKey);
-
             //设置列数据
             HashMap<String,Column> columnMap = new HashMap<String, Column>();
             Element columnsElements = e.element("table-columns");

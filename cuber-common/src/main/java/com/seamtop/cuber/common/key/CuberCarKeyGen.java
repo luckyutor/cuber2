@@ -5,8 +5,13 @@ package com.seamtop.cuber.common.key;
  */
 public class CuberCarKeyGen implements ITableKeygenerator {
 
-    public String getCuberCarKey(Object object) {
+    public  String getCuberCarKey(Object object) {
+        System.out.println("-------------ok");
+        return null;
+    }
 
+    public  String getCuberCarKey() {
+        System.out.println("-------------ok");
         return null;
     }
 }
