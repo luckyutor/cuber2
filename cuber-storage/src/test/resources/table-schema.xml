@@ -24,7 +24,10 @@
                 <column maxsize="" type="string" isRequired="true" desc="颜色">color</column>
                 <column maxsize="" type="int" isRequired="true" desc="车辆来源">flag_source</column>
                 <column maxsize="" type="int" isRequired="true" desc="商户">dealer_id</column>
-                <column maxsize="" type="date" isRequired="true" desc="商户">license_date</column>
+                <column maxsize="" type="date" isRequired="true" desc="上牌日期">license_date</column>
+            </family>
+            <family name="extend_family">
+
             </family>
         </table-columns>
     </table>

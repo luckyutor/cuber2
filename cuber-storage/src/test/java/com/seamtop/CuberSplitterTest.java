@@ -107,9 +107,7 @@ public class CuberSplitterTest {
             int maxSize = 0;
             if(rowKey.getKeyName().equals(param)){//为主键
                 isRequired = true;
-                //数据类型判断
                 valueType = rowKey.getKeyType();
-                //数据长度判断
                 maxSize = rowKey.getKeyMaxSize();
             }else {
                 //首先判断该参数是否在MetaData中存在
@@ -117,27 +115,25 @@ public class CuberSplitterTest {
                 if(column == null){
                     throw new ColumnNotExistException("表"+ tableMetaData.getTableName()+"中列"+param + "不存在");
                 }
-                //是否必填
                 isRequired = column.isIfRequired();
-                //数据类型判断
                 valueType = column.getColumnType();
-                //数据长度判断
                 maxSize = column.getColumnMaxSize();
             }
+            //数据类型判断
             if(valueType != 0){
                 boolean result = isTypeCorrect(valueType,value);
                 if(!result){
                     throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
                 }
             }
-
+            //是否必填
             if(isRequired && StringUtil.isEmpty(value)){
                 throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "不可为空");
             }
+            //数据长度判断
             if(maxSize > 0 && value.length() > maxSize){
                 throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
             }
-
         }
 
         //判断XML必填字段传入参数中是否均已包含
