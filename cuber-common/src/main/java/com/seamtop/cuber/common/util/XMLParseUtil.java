@@ -5,4 +5,7 @@ package com.seamtop.cuber.common.util;
  */
 public class XMLParseUtil {
 
+    public static void main(String [] args){
+        System.out.println("Test --");
+    }
 }

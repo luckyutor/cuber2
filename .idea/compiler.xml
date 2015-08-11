@@ -33,13 +33,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="cuber-client" target="1.5" />
-      <module name="cuber-common" target="1.5" />
-      <module name="cuber-job" target="1.5" />
-      <module name="cuber-server" target="1.5" />
-      <module name="cuber-storage" target="1.5" />
-      <module name="cuber-web" target="1.5" />
-      <module name="cuber2" target="1.5" />
+      <module name="cuber-client" target="1.7" />
+      <module name="cuber-common" target="1.7" />
+      <module name="cuber-job" target="1.7" />
+      <module name="cuber-server" target="1.7" />
+      <module name="cuber-storage" target="1.7" />
+      <module name="cuber-web" target="1.7" />
+      <module name="cuber2" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
