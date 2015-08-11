@@ -9,7 +9,7 @@ public class TableOperatorBean {
 
     private String operatorName;
 
-    private String operatorType;
+    private int operatorType;
 
     public String getOperatorTable() {
         return operatorTable;
@@ -27,11 +27,11 @@ public class TableOperatorBean {
         this.operatorName = operatorName;
     }
 
-    public String getOperatorType() {
+    public int getOperatorType() {
         return operatorType;
     }
 
-    public void setOperatorType(String operatorType) {
+    public void setOperatorType(int operatorType) {
         this.operatorType = operatorType;
     }
 }
