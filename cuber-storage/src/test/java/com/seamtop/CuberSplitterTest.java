@@ -3,6 +3,8 @@ package com.seamtop;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.seamtop.cuber.common.base.DataObject;
+import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
 import com.seamtop.cuber.storage.kafka.CuberSplitter;
 
 import org.apache.hadoop.util.hash.Hash;
@@ -28,7 +30,8 @@ public class CuberSplitterTest {
             JSONObject jsonObject = (JSONObject)array.get(i);
             System.out.println(jsonObject);
             String msgType = jsonObject.getString("msgType");
-            System.out.println(msgType);
+            TableOperatorBean operatorBean = DataObject.INSTANCE.operatorDataMap.get(msgType);
+
 
 
         }

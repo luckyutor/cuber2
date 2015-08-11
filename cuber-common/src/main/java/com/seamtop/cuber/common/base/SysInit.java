@@ -26,7 +26,7 @@ public class SysInit {
     }
 
     public static HashMap<String,TableMetaData> loadTableSchema(){
-        String path = SysInit.class.getClassLoader().getResource("").getPath();
+        String path = SysInit.class.getResource("/").getPath();
         String filePath = path + "table-schema.xml";
         HashMap<String,TableMetaData> metaDataMap = null;
         try {
@@ -39,7 +39,8 @@ public class SysInit {
 
 
     public static HashMap<String,TableOperatorBean> loadTableOperator(){
-        String path = SysInit.class.getClassLoader().getResource("").getPath();
+        String path = SysInit.class.getResource("/").getPath();
+        System.out.println("path:"+path);
         String filePath = path + "table-operator.xml";
         HashMap<String,TableOperatorBean> operatorDataMap = null;
         try {
@@ -88,6 +89,7 @@ public class SysInit {
 
 
     public static HashMap<String,TableMetaData> loadTableSchema(String filePath) throws Exception{
+        System.out.println("---------------------------------aaaa"+filePath);
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(new File(filePath));
         // 获取根元素
