@@ -96,30 +96,21 @@ public class CuberSplitterTest {
             throw new CuberParamsProcessException("数据存储异常");
         }
 
+        //判断传入参数是否符合XML配置要求
         HashMap<String,Column> columnMap = tableMetaData.getColumnMap();
-
         for(String param : dataMap.keySet()){
             //首先判断该字段是否为主键
             RowKey rowKey = tableMetaData.getRowKey();
             String value = dataMap.get(param);
+            int valueType = 0;
+            boolean isRequired = false;
+            int maxSize = 0;
             if(rowKey.getKeyName().equals(param)){//为主键
-                if(StringUtil.isEmpty(value)){
-                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
-                }
+                isRequired = true;
                 //数据类型判断
-                int valueType = rowKey.getKeyType();
-                if(valueType != 0){
-                    boolean result = isTypeCorrect(valueType,value);
-                    if(!result){
-                        throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
-                    }
-                }
-
+                valueType = rowKey.getKeyType();
                 //数据长度判断
-                int maxSize = rowKey.getKeyMaxSize();
-                if(maxSize > 0 && value.length() > maxSize){
-                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
-                }
+                maxSize = rowKey.getKeyMaxSize();
             }else {
                 //首先判断该参数是否在MetaData中存在
                 Column column = columnMap.get(param);
@@ -127,32 +118,31 @@ public class CuberSplitterTest {
                     throw new ColumnNotExistException("表"+ tableMetaData.getTableName()+"中列"+param + "不存在");
                 }
                 //是否必填
-                ;
-                boolean isRequired = column.isIfRequired();
-                if(isRequired && StringUtil.isEmpty(value)){
-                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "不可为空");
-                }
-
+                isRequired = column.isIfRequired();
                 //数据类型判断
-                int valueType = column.getColumnType();
-                if(valueType != 0){
-                    boolean result = isTypeCorrect(valueType,value);
-                    if(!result){
-                        throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
-                    }
-                }
-
+                valueType = column.getColumnType();
                 //数据长度判断
-                int maxSize = column.getColumnMaxSize();
-                if(maxSize > 0 && value.length() > maxSize){
-                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
+                maxSize = column.getColumnMaxSize();
+            }
+            if(valueType != 0){
+                boolean result = isTypeCorrect(valueType,value);
+                if(!result){
+                    throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "参数格式错误");
                 }
             }
 
+            if(isRequired && StringUtil.isEmpty(value)){
+                throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "不可为空");
+            }
+            if(maxSize > 0 && value.length() > maxSize){
+                throw new CuberParamsProcessException("表"+ tableMetaData.getTableName()+"中列"+param + "超出字符限制");
+            }
 
         }
 
-        return false;
+        //判断XML必填字段传入参数中是否均已包含
+
+        return true;
     }
 
     private boolean isTypeCorrect(int valueType,String str) throws Exception{
