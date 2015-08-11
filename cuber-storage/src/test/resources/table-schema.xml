@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  该配置文件主要包含：
+  （1）表、列族和列的对应关系
+  （2）表主键KEY的生成方式
+  （3）表操作所对应的API函数
+  （4）字段数据验证方式，不填即不验证。
+  -->
+<schema>
+    <table name="CUBER_CAR">
+        <table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen">car_id</table-key>
+        <table-columns>
+            <family name="base_family">
+                <column maxsize="" type="int" isRequired="true" desc="省份">province_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="城市">city_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="品牌">brand_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="车型">model_id</column>
+            </family>
+        </table-columns>
+    </table>
+</schema>

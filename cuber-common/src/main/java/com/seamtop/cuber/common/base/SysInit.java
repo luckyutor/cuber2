@@ -40,7 +40,6 @@ public class SysInit {
 
     public static HashMap<String,TableOperatorBean> loadTableOperator(){
         String path = SysInit.class.getResource("/").getPath();
-        System.out.println("path:"+path);
         String filePath = path + "table-operator.xml";
         HashMap<String,TableOperatorBean> operatorDataMap = null;
         try {
