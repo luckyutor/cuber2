@@ -1,5 +1,6 @@
 package com.seamtop.cuber.common.util;
 import com.seamtop.cuber.common.exception.CuberFileParseException;
+import com.seamtop.cuber.common.metadata.Column;
 import com.seamtop.cuber.common.metadata.RowKey;
 import com.seamtop.cuber.common.metadata.TableMetaData;
 import com.seamtop.cuber.common.metadata.ValueTypeContants;
@@ -10,6 +11,7 @@ import scala.Int;
 import scala.xml.MetaData;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,10 +22,9 @@ public class XMLParseUtil {
 
     public static void main(String [] args) throws Exception{
         System.out.println("Test --");
-        parseTableSchema();
     }
 
-    public static void parseTableSchema() throws Exception{
+    public static void loadTableSchema() throws Exception{
         String path = XMLParseUtil.class.getClassLoader().getResource("").getPath();
         String filePath = path + "schema.xml";
         SAXReader saxReader = new SAXReader();
@@ -55,8 +56,27 @@ public class XMLParseUtil {
             rowKey.setKeyType(getKeyType(keyElement.attributeValue("type")));
 
             //设置列数据
-
-
+            List<Column> columnList = new ArrayList<Column>();
+            Element columnsElements = e.element("table-columns");
+            List<Element> familyElements = columnsElements.elements("family");
+            for(int j=0;j<familyElements.size();j++){
+                Element family = familyElements.get(j);
+                String familyName = family.attributeValue("name");
+                System.out.println(familyName);
+                List<Element> elements = family.elements("column");
+                for(int m=0;m<elements.size();m++){
+                    Element columnElement = elements.get(m);
+                    Column column = new Column();
+                    column.setFamilyName(familyName);
+                    column.setColumnName(columnElement.getStringValue());
+                    column.setColumnDesc(columnElement.attributeValue("desc"));
+                    column.setColumnType(getKeyType(columnElement.attributeValue("type")));
+                    column.setColumnMaxSize(StringUtil.isEmpty(columnElement.attributeValue("maxsize"))?0:Integer.valueOf(columnElement.attributeValue("maxsize")));
+                    column.setIfRequired("true".equals(columnElement.attributeValue("isRequired"))?true:false);
+                    columnList.add(column);
+                }
+            }
+            tableMetaData.setColumnList(columnList);
         }
     }
 

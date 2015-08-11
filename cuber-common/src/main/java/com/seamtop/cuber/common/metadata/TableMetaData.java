@@ -1,6 +1,5 @@
 package com.seamtop.cuber.common.metadata;
 
-import joptsimple.internal.Column;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,7 @@ public class TableMetaData {
     /**
      * 列族以及列族对应的列
      */
-    private HashMap<String,List<Column>> tableMetaData;
+    private List<Column> columnList;
 
     /**
      * 表操作者对象
@@ -46,12 +45,12 @@ public class TableMetaData {
         this.rowKey = rowKey;
     }
 
-    public HashMap<String, List<Column>> getTableMetaData() {
-        return tableMetaData;
+    public List<Column> getColumnList() {
+        return columnList;
     }
 
-    public void setTableMetaData(HashMap<String, List<Column>> tableMetaData) {
-        this.tableMetaData = tableMetaData;
+    public void setColumnList(List<Column> columnList) {
+        this.columnList = columnList;
     }
 
     public HashMap<String, Integer> getOperatorMap() {

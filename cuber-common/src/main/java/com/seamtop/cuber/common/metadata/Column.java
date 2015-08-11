@@ -18,17 +18,22 @@ public class Column {
     /**
      * 字段类型
      */
-    private String columnType;
+    private int columnType;
 
     /**
      * 字段字符长度
      */
-    private String columnMaxSize;
+    private int columnMaxSize;
 
     /**
      * 是否必填
      */
     private boolean ifRequired;
+
+    /**
+     * 列所在列族名称
+     */
+    private String familyName;
 
 
     public String getColumnName() {
@@ -47,19 +52,12 @@ public class Column {
         this.columnDesc = columnDesc;
     }
 
-    public String getColumnType() {
-        return columnType;
-    }
 
-    public void setColumnType(String columnType) {
-        this.columnType = columnType;
-    }
-
-    public String getColumnMaxSize() {
+    public int getColumnMaxSize() {
         return columnMaxSize;
     }
 
-    public void setColumnMaxSize(String columnMaxSize) {
+    public void setColumnMaxSize(int columnMaxSize) {
         this.columnMaxSize = columnMaxSize;
     }
 
@@ -69,5 +67,21 @@ public class Column {
 
     public void setIfRequired(boolean ifRequired) {
         this.ifRequired = ifRequired;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public int getColumnType() {
+        return columnType;
+    }
+
+    public void setColumnType(int columnType) {
+        this.columnType = columnType;
     }
 }
