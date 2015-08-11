@@ -73,6 +73,28 @@ public class CuberSplitterTest {
     }
 
 
+    /**
+     * 数据校验实现 -- 判断数据添加参数
+     * @param dataMap
+     * @param tableMetaData
+     * @return
+     */
+    public boolean caliAddOperatorParams(HashMap<String,String> dataMap,TableMetaData tableMetaData){
+        if(dataMap == null || dataMap.size() == 0 || tableMetaData == null){
+            return false;
+        }
+
+        for(String param : dataMap.keySet()){
+            //首先判断该参数是否在MetaData中存在
+
+            String value = dataMap.get(param);
+
+        }
+
+        return false;
+    }
+
+
 
 
     public List<Delete> getDeleteList(){
