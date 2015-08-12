@@ -31,17 +31,18 @@ public  class WordCounter extends BaseRichBolt {
     }
 
     public void execute(Tuple input) {
-        String word = input.getString(0);
-        System.out.println("word=============================================================================:"+word);
-//        int count = input.getInteger(1);
-//        LOG.info("RECV[splitter -> counter] " + word + " : " + count);
-//        System.out.println("RECV[splitter -> counter] " + word + " : " + count);
-//        AtomicInteger ai = this.counterMap.get(word);
-//        if(ai == null) {
-//            ai = new AtomicInteger();
-//            this.counterMap.put(word, ai);
-//        }
-//        ai.addAndGet(count);
+        System.out.println("WordCounter--------kakaka:"+input);
+//        String word = input.getString(0);
+//        System.out.println("word=============================================================================:"+word);
+////        int count = input.getInteger(1);
+////        LOG.info("RECV[splitter -> counter] " + word + " : " + count);
+////        System.out.println("RECV[splitter -> counter] " + word + " : " + count);
+////        AtomicInteger ai = this.counterMap.get(word);
+////        if(ai == null) {
+////            ai = new AtomicInteger();
+////            this.counterMap.put(word, ai);
+////        }
+////        ai.addAndGet(count);
         collector.ack(input);
     }
 

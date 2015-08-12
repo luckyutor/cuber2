@@ -13,7 +13,7 @@ public class ParamsContants {
 
     public static final String MILEAGE = "mileage";
 
-    public static final String LICENSE_DATE = "first_license_date";
+    public static final String LICENSE_DATE = "license_date";
 
     public static final String PRICE = "sale_price";
 

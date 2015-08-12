@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="cuber-storage:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/cuber_storage_jar</output-path>
+    <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="cuber-storage.jar">
       <element id="module-output" name="cuber-storage" />
       <element id="module-output" name="cuber-common" />

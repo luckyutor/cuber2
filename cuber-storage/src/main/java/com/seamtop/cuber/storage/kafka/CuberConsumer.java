@@ -39,7 +39,7 @@ public class CuberConsumer {
         builder.setSpout("kafka-reader", new KafkaSpout(spoutConf), 2); // Kafka我们创建了一个5分区的Topic，这里并行度设置为5
         builder.setBolt("word-splitter", new CuberSplitter(), 2).globalGrouping("kafka-reader");
         //builder.setBolt("word-splitter", new CuberSplitter(), 1).shuffleGrouping("kafka-reader");
-        builder.setBolt("word-counter", new WordCounter()).fieldsGrouping("word-splitter", new Fields("line"));
+        builder.setBolt("word-counter", new WordCounter()).fieldsGrouping("word-splitter", new Fields("s","putList"));
 
         Config conf = new Config();
 
