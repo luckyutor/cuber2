@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+    <table name="CUBER_CAR">
+        <table-operator>
+            <add-operator>ADD_CAR_INDEX</add-operator>
+            <delete-operator>DELETE_CAR_INDEX</delete-operator>
+            <update-operator>UPDATE_CAR_INDEX</update-operator>
+        </table-operator>
+    </table>
+</operator>

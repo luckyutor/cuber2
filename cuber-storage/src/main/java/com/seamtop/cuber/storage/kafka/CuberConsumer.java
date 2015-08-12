@@ -22,8 +22,8 @@ import backtype.storm.tuple.Fields;
 public class CuberConsumer {
 
     public static void main(String[] args) throws AlreadyAliveException, InvalidTopologyException, InterruptedException {
-        //String zks = "192.168.126.130:2181";
-        String zks = "192.168.45.52:2181";
+        String zks = "192.168.126.130:2181";
+        //String zks = "192.168.45.52:2181";
         String topic = "test";
         String zkRoot = "/storm"; // default zookeeper root configuration for storm
         String id = "word";
@@ -32,7 +32,8 @@ public class CuberConsumer {
         SpoutConfig spoutConf = new SpoutConfig(brokerHosts, topic, zkRoot, id);
         spoutConf.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConf.forceFromStart = false;
-        spoutConf.zkServers = Arrays.asList(new String[] {"192.168.45.52"});
+        //spoutConf.zkServers = Arrays.asList(new String[] {"192.168.45.52"});
+        spoutConf.zkServers = Arrays.asList(new String[] {"192.168.126.130"});
         spoutConf.zkPort = 2181;
 
         TopologyBuilder builder = new TopologyBuilder();
