@@ -6,9 +6,11 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
+import com.seamtop.cuber.storage.HBaseUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.LoggerFactory;
@@ -41,9 +43,10 @@ public  class WordCounter extends BaseRichBolt {
         Configuration conf = HBaseConfiguration.create();
         System.out.println("conf:"+conf);
         List<Put> putList = new ArrayList<Put>();
-        HTable table = null;
+        HTableInterface table = null;
         try{
-             table = new HTable(conf,"CUBER_CAR");
+             //table = new HTable(conf,"CUBER_CAR");
+            table = HBaseUtil.getHConnection().getTable("CUBER_CAR");
         }catch (Exception e){
             e.printStackTrace();
         }
