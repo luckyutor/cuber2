@@ -59,25 +59,19 @@ public class CuberSplitter extends BaseRichBolt {
         }
         JSONObject jsonObject = (JSONObject)taskObject.get("task");
         JSONArray msgArray = (JSONArray)jsonObject.get("messageList");
-        List<Put> putList = null;
+        List<TransData> transDataList = null;
         try{
-            putList = this.emitMsg(msgArray);
+            transDataList = this.emitMsg(msgArray);
         }catch (Exception e){
             e.printStackTrace();
         }
         String s = "add";
-        TransData transData = new TransData();
-        transData.setColumnName("column");
-        transData.setFamilyName("family");
-        transData.setValue("value");
-        List<TransData> transDataList = new ArrayList<TransData>();
-        transDataList.add(transData);
         collector.emit(input,new Values(s,transDataList));
         collector.ack(input);
     }
 
-    public  List<Put> emitMsg(JSONArray array) throws Exception{
-        List<Put> putList = null;
+    public List<TransData> emitMsg(JSONArray array) throws Exception{
+        List<TransData> transDataList = null;
         for(int i=0;i<array.size();i++){
             JSONObject jsonObject = (JSONObject)array.get(i);
             String msgType = jsonObject.getString("msgType");
@@ -88,22 +82,22 @@ public class CuberSplitter extends BaseRichBolt {
             TableOperatorBean operatorBean = DataObject.INSTANCE.operatorDataMap.get(msgType);
             TableMetaData tableMetaData = DataObject.INSTANCE.metaDataMap.get(operatorBean.getOperatorTable());
             if(this.caliAddOperatorParams(dataMap,tableMetaData)){
-                putList = getPutList(dataMap,tableMetaData);
+                transDataList = getPutList(dataMap,tableMetaData);
 
-                System.out.println("PutList----------------------------------------"+putList);
+                System.out.println("PutList----------------------------------------"+transDataList);
 //              Configuration conf = HBaseConfiguration.create();
 //              HTable table = new HTable(conf,tableMetaData.getTableName());
 //              table.put(putList);
 //              table.close();
             }
         }
-        return putList;
+        return transDataList;
     }
 
 
-    public List<Put> getPutList(HashMap<String,String> dataMap,TableMetaData tableMetaData){
+    public List<TransData> getPutList(HashMap<String,String> dataMap,TableMetaData tableMetaData){
         HashMap<String,Column> columnMap = tableMetaData.getColumnMap();
-        List<Put> list = new ArrayList<Put>();
+        List<TransData> list = new ArrayList<TransData>();
         for(String params : dataMap.keySet()){
             Column column = columnMap.get(params);
             if(column == null){
@@ -112,11 +106,14 @@ public class CuberSplitter extends BaseRichBolt {
             int rowKey = Integer.parseInt(dataMap.get("car_id"));
             String columnName = column.getColumnName();
             String value = dataMap.get(columnName);
-            System.out.println("value"+value);
-            System.out.println("rowKey:"+rowKey);
-            Put p = new Put(Bytes.toBytes(rowKey));
-            p.add(Bytes.toBytes(column.getFamilyName()),Bytes.toBytes(columnName),Bytes.toBytes(value));
-            list.add(p);
+            TransData transData = new TransData();
+            transData.setRowKey(rowKey+"");
+            transData.setFamilyName(column.getFamilyName());
+            transData.setColumnName(columnName);
+            transData.setValue(value);
+//            Put p = new Put(Bytes.toBytes(rowKey));
+//            p.add(Bytes.toBytes(column.getFamilyName()),Bytes.toBytes(columnName),Bytes.toBytes(value));
+            list.add(transData);
         }
         return list;
     }

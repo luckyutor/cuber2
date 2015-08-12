@@ -12,11 +12,21 @@ public class TransData implements Serializable {
 
     private static final long serialVersionUID = -2381284536384630295L;
 
+    private String rowKey;
+
     private String familyName;
 
     private String columnName;
 
     private String value;
+
+    public String getRowKey() {
+        return rowKey;
+    }
+
+    public void setRowKey(String rowKey) {
+        this.rowKey = rowKey;
+    }
 
     public String getFamilyName() {
         return familyName;

@@ -1,12 +1,17 @@
 package com.seamtop.test;
 
 import com.seamtop.cuber.client.CuberClient;
+import org.apache.commons.collections.map.UnmodifiableMap;
+import org.apache.commons.configuration.Configuration;
 import org.apache.hadoop.hbase.client.Put;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+
+
 import java.util.List;
 
 /**
