@@ -66,7 +66,13 @@ public class CuberSplitter extends BaseRichBolt {
             e.printStackTrace();
         }
         String s = "add";
-        collector.emit(input,new Values(s,putList));
+        TransData transData = new TransData();
+        transData.setColumnName("column");
+        transData.setFamilyName("family");
+        transData.setValue("value");
+        List<TransData> transDataList = new ArrayList<TransData>();
+        transDataList.add(transData);
+        collector.emit(input,new Values(s,transDataList));
         collector.ack(input);
     }
 
@@ -83,6 +89,7 @@ public class CuberSplitter extends BaseRichBolt {
             TableMetaData tableMetaData = DataObject.INSTANCE.metaDataMap.get(operatorBean.getOperatorTable());
             if(this.caliAddOperatorParams(dataMap,tableMetaData)){
                 putList = getPutList(dataMap,tableMetaData);
+
                 System.out.println("PutList----------------------------------------"+putList);
 //              Configuration conf = HBaseConfiguration.create();
 //              HTable table = new HTable(conf,tableMetaData.getTableName());
@@ -102,7 +109,7 @@ public class CuberSplitter extends BaseRichBolt {
             if(column == null){
                 continue;
             }
-            int rowKey = Integer.parseInt(dataMap.get("id"));
+            int rowKey = Integer.parseInt(dataMap.get("car_id"));
             String columnName = column.getColumnName();
             String value = dataMap.get(columnName);
             System.out.println("value"+value);
@@ -201,7 +208,7 @@ public class CuberSplitter extends BaseRichBolt {
 
 
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("s","putList"));
+        declarer.declare(new Fields("s","transDataList"));
     }
 
 }

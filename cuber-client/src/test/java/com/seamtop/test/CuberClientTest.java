@@ -1,10 +1,13 @@
 package com.seamtop.test;
 
 import com.seamtop.cuber.client.CuberClient;
+import org.apache.hadoop.hbase.client.Put;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by feng on 2015/8/8.
@@ -33,5 +36,12 @@ public class CuberClientTest {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    public void test2(){
+        String s = "[{\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"sale_price\",\"vlen\":6}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"mileage\",\"vlen\":4}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"province_id\",\"vlen\":6}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"brand_id\",\"vlen\":3}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"trimm_id\",\"vlen\":4}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"city_id\",\"vlen\":6}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"flag\",\"vlen\":1}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"create_date\",\"vlen\":13}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"color\",\"vlen\":6}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"model_id\",\"vlen\":4}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"dealer_id\",\"vlen\":6}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"flag_source\",\"vlen\":1}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}, {\"totalColumns\":1,\"families\":{\"base_family\":[{\"timestamp\":9223372036854775807,\"tag\":[],\"qualifier\":\"license_date\",\"vlen\":13}]},\"row\":\"\\\\x00\\\\x00\\\\x00\\\\x01\"}]";
+
+
     }
 }
