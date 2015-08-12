@@ -5,7 +5,7 @@ package com.seamtop.cuber.common.entriy;
  */
 public class ParamsContants {
 
-    public static final String CAR_ID = "id";
+    public static final String CAR_ID = "car_id";
 
     public static final String PROVINCE_ID = "province_id";
 

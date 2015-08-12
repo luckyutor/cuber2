@@ -26,6 +26,7 @@ public class SysInit {
     }
 
     public static HashMap<String,TableMetaData> loadTableSchema(){
+        System.out.println("==========================================================load table schema===============");
         String path = SysInit.class.getResource("/").getPath();
         String filePath = path + "table-schema.xml";
         HashMap<String,TableMetaData> metaDataMap = null;
@@ -39,6 +40,7 @@ public class SysInit {
 
 
     public static HashMap<String,TableOperatorBean> loadTableOperator(){
+        System.out.println("==========================================================load table operator===============");
         String path = SysInit.class.getResource("/").getPath();
         String filePath = path + "table-operator.xml";
         HashMap<String,TableOperatorBean> operatorDataMap = null;

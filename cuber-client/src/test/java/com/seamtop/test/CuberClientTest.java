@@ -14,7 +14,7 @@ public class CuberClientTest {
     @Test
     public void testAddCarIndex(){
         HashMap<String,String> paramsMap = new HashMap<String, String>();
-        paramsMap.put("id","1");
+        paramsMap.put("car_id","1");
         paramsMap.put("province_id","110000");
         paramsMap.put("city_id","111000");
         paramsMap.put("license_date",new Date().getTime()+"");
