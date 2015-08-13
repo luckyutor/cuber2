@@ -36,22 +36,39 @@ public  class HBaseBolt extends BaseRichBolt {
     }
 
     public void execute(Tuple input){
-        String operate = input.getString(0);
-        List<TransData> transDataList = (List<TransData>)input.getValue(1);
+        String operateTable = input.getString(0);
+        int operateType = input.getInteger(1);
+        List<TransData> transDataList = (List<TransData>)input.getValue(2);
         Configuration conf = HBaseConfiguration.create();
-        List<Put> putList = new ArrayList<Put>();
         HTableInterface table = null;
         try{
-            table = HBaseUtil.getHConnection().getTable("CUBER_CAR");
+            table = HBaseUtil.getHConnection().getTable(operateTable);
         }catch (Exception e){
             e.printStackTrace();
         }
+        if(table == null){
+            return;
+        }
+        switch (operateType){
+            case 0:
+                addData(transDataList,table);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        collector.ack(input);
+        LOG.info("--------------------message process ok--------------------");
+    }
 
+    private void addData(List<TransData> transDataList,HTableInterface table){
+        List<Put> putList = new ArrayList<Put>();
         for(int i=0;i<transDataList.size();i++){
             TransData transData = transDataList.get(i);
-              Put p = new Put(Bytes.toBytes(transData.getRowKey()));
-              p.add(Bytes.toBytes(transData.getFamilyName()),Bytes.toBytes(transData.getColumnName()),Bytes.toBytes(transData.getValue()));
-              putList.add(p);
+            Put p = new Put(Bytes.toBytes(transData.getRowKey()));
+            p.add(Bytes.toBytes(transData.getFamilyName()),Bytes.toBytes(transData.getColumnName()),Bytes.toBytes(transData.getValue()));
+            putList.add(p);
         }
         try{
             table.put(putList);
@@ -59,7 +76,6 @@ public  class HBaseBolt extends BaseRichBolt {
         }catch (Exception e ){
             e.printStackTrace();
         }
-        collector.ack(input);
     }
 
     @Override
@@ -69,12 +85,9 @@ public  class HBaseBolt extends BaseRichBolt {
         while(iter.hasNext()) {
             Map.Entry<String, AtomicInteger> entry = iter.next();
             LOG.info(entry.getKey() + "\t:\t" + entry.getValue().get());
-
         }
-
     }
 
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("word", "count"));
     }
 }

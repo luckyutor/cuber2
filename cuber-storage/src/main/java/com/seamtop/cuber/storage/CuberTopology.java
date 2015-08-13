@@ -38,12 +38,11 @@ public class CuberTopology {
         spoutConf.zkPort = 2181;
         TopologyBuilder builder = new TopologyBuilder();
         int queueSpoutNum = Integer.parseInt(properties.getProperty("queue.spout.num"));
-        System.out.println();
         int queueSplitterNum = Integer.parseInt(properties.getProperty("queue.splitter.num"));
         int queueBoltNum = Integer.parseInt(properties.getProperty("queue.bolt.num"));
         builder.setSpout("queue-spout", new KafkaSpout(spoutConf), queueSpoutNum);
         builder.setBolt("queue-splitter", new CuberSplitter(), queueSplitterNum).shuffleGrouping("queue-spout");
-        builder.setBolt("queue-bolt", new HBaseBolt(),queueBoltNum).fieldsGrouping("queue-splitter", new Fields("s","transDataList"));
+        builder.setBolt("queue-bolt", new HBaseBolt(),queueBoltNum).shuffleGrouping("queue-splitter");
         Config conf = new Config();
         String name = CuberTopology.class.getSimpleName();
         conf.put(Config.NIMBUS_HOST, "nimbus.cuber.seamtop.com");
