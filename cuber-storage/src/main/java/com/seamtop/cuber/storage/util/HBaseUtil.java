@@ -1,4 +1,4 @@
-package com.seamtop.cuber.common.util;
+package com.seamtop.cuber.storage.util;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;

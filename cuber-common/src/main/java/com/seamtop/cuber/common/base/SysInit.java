@@ -13,6 +13,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class SysInit {
     }
 
     public static HashMap<String,TableMetaData> loadTableSchema(){
-        String path = SysInit.class.getResource("/").getPath();
+
+        String path = SysInit.class.getResource("").getPath();
         String filePath = path + "table-schema.xml";
         HashMap<String,TableMetaData> metaDataMap = null;
         try {
@@ -39,7 +41,7 @@ public class SysInit {
 
 
     public static HashMap<String,TableOperatorBean> loadTableOperator(){
-        String path = SysInit.class.getResource("/").getPath();
+        String path = SysInit.class.getResource("").getPath();
         String filePath = path + "table-operator.xml";
         HashMap<String,TableOperatorBean> operatorDataMap = null;
         try {
@@ -53,7 +55,13 @@ public class SysInit {
 
     public static HashMap<String,TableOperatorBean> loadTableOperator(String filePath) throws Exception{
         SAXReader saxReader = new SAXReader();
-        Document document = saxReader.read(new File(filePath));
+        InputStream is1 = null;
+        try{
+            is1 = SysInit.class.getResourceAsStream("/table-operator.xml");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Document document = saxReader.read(is1);
         // 获取根元素
         Element root = document.getRootElement();
         List<Element> tableList = root.elements();
@@ -89,7 +97,15 @@ public class SysInit {
 
     public static HashMap<String,TableMetaData> loadTableSchema(String filePath) throws Exception{
         SAXReader saxReader = new SAXReader();
-        Document document = saxReader.read(new File(filePath));
+        InputStream is1 = null;
+        try{
+            is1 = SysInit.class.getResourceAsStream("/table-operator.xml");
+            System.out.println("is1:"+is1);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        Document document = saxReader.read(is1);
         // 获取根元素
         Element root = document.getRootElement();
         List<Element> tableList = root.elements();
