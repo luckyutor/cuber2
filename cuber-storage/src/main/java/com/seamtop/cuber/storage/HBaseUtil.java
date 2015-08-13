@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by feng on 2015/8/12.
  */
 public class HBaseUtil {
-    private static final String QUORUM = "192.168.126.130";
+    private static final String QUORUM = "zookeeper.cuber.seamtop.com";
     private static final String CLIENTPORT = "2181";
     private static Configuration conf = null;
     private static HConnection conn = null;
