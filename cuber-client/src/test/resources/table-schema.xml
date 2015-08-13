@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  该配置文件主要包含：
+  （1）表、列族和列的对应关系
+  （2）表主键KEY的生成方式
+  （3）表操作所对应的API函数
+  （4）字段数据验证方式，不填即不验证。
+  -->
+<schema>
+    <table name="CUBER_CAR">
+        <table-key maxsize="10" type="int" desc="车源ID">car_id</table-key>
+        <!--<table-key maxsize="10" type="int" desc="车源ID" generator="com.seamtop.cuber.common.key.CuberCarKeyGen" />-->
+        <table-columns>
+            <family name="base_family">
+                <column maxsize="" type="float" isRequired="true" desc="售价">sale_price</column>
+                <column maxsize="" type="int" isRequired="true" desc="里程">mileage</column>
+                <column maxsize="" type="int" isRequired="true" desc="省份">province_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="城市">city_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="品牌">brand_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="车型">model_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="车款">trimm_id</column>
+                <column maxsize="" type="int" isRequired="true" desc="车源状态">flag</column>
+                <column maxsize="" type="date" isRequired="true" desc="发布日期">create_date</column>
+                <column maxsize="" type="string" isRequired="true" desc="颜色">color</column>
+                <column maxsize="" type="int" isRequired="true" desc="车辆来源">flag_source</column>
+                <column maxsize="" type="int" isRequired="true" desc="商户">dealer_id</column>
+                <column maxsize="" type="date" isRequired="true" desc="上牌日期">license_date</column>
+            </family>
+            <family name="extend_family">
+
+            </family>
+        </table-columns>
+    </table>
+</schema>
