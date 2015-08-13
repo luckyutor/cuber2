@@ -1,9 +1,6 @@
-package com.seamtop.cuber.storage.kafka;
-
-import org.apache.hadoop.hbase.client.Put;
+package com.seamtop.cuber.common.entriy;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by zongjunfeng on 2015/8/12.
