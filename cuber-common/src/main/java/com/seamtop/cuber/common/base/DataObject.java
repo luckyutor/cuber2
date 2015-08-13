@@ -1,10 +1,9 @@
 package com.seamtop.cuber.common.base;
 
 import com.seamtop.cuber.common.metadata.TableMetaData;
-import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
+import com.seamtop.cuber.common.operator.TableOperatorBean;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by zongjunfeng on 2015/8/11.

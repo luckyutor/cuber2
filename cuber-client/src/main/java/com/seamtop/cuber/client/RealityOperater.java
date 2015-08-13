@@ -24,6 +24,7 @@ public class RealityOperater implements IOperater {
         if("intime".equals(mode)){//及时发送消息
             String json = CuberUtil.transTaskJson(message);
             QueueSenderAdapter sender = KafkaQueueSender.getInstance();
+            System.out.println("json:"+json);
             sender.send(json);
         }
     }

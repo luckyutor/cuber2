@@ -7,8 +7,8 @@ import com.seamtop.cuber.common.exception.CuberParamsProcessException;
 import com.seamtop.cuber.common.metadata.Column;
 import com.seamtop.cuber.common.metadata.RowKey;
 import com.seamtop.cuber.common.metadata.TableMetaData;
-import com.seamtop.cuber.common.tableoperator.OperatorType;
-import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
+import com.seamtop.cuber.common.operator.OperatorType;
+import com.seamtop.cuber.common.operator.TableOperatorBean;
 import com.seamtop.cuber.common.util.DateUtil;
 import com.seamtop.cuber.common.util.StringUtil;
 

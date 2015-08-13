@@ -15,7 +15,7 @@ import com.seamtop.cuber.common.entriy.TransData;
 import com.seamtop.cuber.common.metadata.Column;
 import com.seamtop.cuber.common.metadata.TableMetaData;
 import com.seamtop.cuber.common.params.ParamsCalibration;
-import com.seamtop.cuber.common.tableoperator.TableOperatorBean;
+import com.seamtop.cuber.common.operator.TableOperatorBean;
 import com.seamtop.cuber.common.util.JSONUtil;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +56,7 @@ public class CuberSplitter extends BaseRichBolt {
         JSONArray msgArray = (JSONArray)jsonObject.get("messageList");
         List<TransData> transDataList = null;
         try{
-            transDataList = this.emitMsg(msgArray);
+            transDataList = parseMessage(msgArray);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -65,7 +65,7 @@ public class CuberSplitter extends BaseRichBolt {
         collector.ack(input);
     }
 
-    public List<TransData> emitMsg(JSONArray array) throws Exception{
+    public List<TransData> parseMessage(JSONArray array) throws Exception{
         List<TransData> transDataList = null;
         for(int i=0;i<array.size();i++){
             JSONObject jsonObject = (JSONObject)array.get(i);

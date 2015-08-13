@@ -36,7 +36,7 @@ public class KafkaQueueSender implements QueueSenderAdapter {
         if(producer == null){
             Properties kafkaProps = new Properties();
             kafkaProps.put("serializer.class", "kafka.serializer.StringEncoder");
-            metaBrokerList = CuberConfiger.clientConfigProperties.getProperty("queue.cuber.kafka.server");
+            metaBrokerList = CuberConfiger.clientConfigProperties.getProperty("cuber.queue.cluster");
             kafkaProps.put("metadata.broker.list", metaBrokerList);
             producer = new kafka.javaapi.producer.Producer<Integer, String>(new ProducerConfig(kafkaProps));
         }

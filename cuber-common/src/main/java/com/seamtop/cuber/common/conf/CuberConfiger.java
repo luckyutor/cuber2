@@ -16,7 +16,7 @@ public class CuberConfiger {
 
     public static Properties loadConfiguration(){
         String path = CuberConfiger.class.getClassLoader().getResource("").getPath();
-        String filePath = path + "cuber_client_conf.properties";
+        String filePath = path + "cuber_conf.properties";
         LOG.debug("Load cuber client config file:" + filePath);
         Properties cuberConfigProperties = null;
         try {
@@ -26,4 +26,5 @@ public class CuberConfiger {
         }
         return cuberConfigProperties;
     }
+
 }
